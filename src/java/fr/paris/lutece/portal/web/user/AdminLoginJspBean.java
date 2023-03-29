@@ -105,8 +105,8 @@ public class AdminLoginJspBean implements Serializable
     private static final String CONSTANT_HTTP = "http";
     private static final String REGEX_ID = "^[\\d]+$";
 
-    private static final String CONSTANT_ACTION_DORESETPASSWORD = "doResetPwd";
-    private static final String CONSTANT_ACTION_DOFORGOTPASSWORD = "doForgotPwd";
+    private static final String CONSTANT_ACTION_DORESETPASSOWRD = "doResetPwd";
+    private static final String CONSTANT_ACTION_DOFORGOTPASSOWRD = "doForgotPwd";
     private static final String CONSTANT_ACTION_DOFORGOTLOGIN = "doForgotLogin";
     private static final String CONSTANT_ACTION_DOLOGOUT = "doLogout";
     private static final String CONSTANT_BO = "BO";
@@ -518,7 +518,7 @@ public class AdminLoginJspBean implements Serializable
 
         MailService.sendMailHtml( user.getEmail( ), strSenderEmail, strSenderEmail, strEmailSubject, template.getHtml( ) );
 
-        AccessLogService.getInstance( ).info( AccessLoggerConstants.EVENT_TYPE_CONNECT, CONSTANT_ACTION_DOFORGOTPASSWORD, user, null, CONSTANT_BO );
+        AccessLogService.getInstance( ).info( AccessLoggerConstants.EVENT_TYPE_CONNECT, CONSTANT_ACTION_DOFORGOTPASSOWRD, user, null, CONSTANT_BO );
 
         return AdminMessageService.getMessageUrl( request, MESSAGE_SENDING_SUCCESS, JSP_URL_ADMIN_LOGIN, AdminMessage.TYPE_INFO );
     }
@@ -600,7 +600,7 @@ public class AdminLoginJspBean implements Serializable
         AdminUserHome.update( user );
         AdminUserHome.insertNewPasswordInHistory( user.getPassword( ), user.getUserId( ) );
 
-        AccessLogService.getInstance( ).info( AccessLoggerConstants.EVENT_TYPE_CONNECT, CONSTANT_ACTION_DORESETPASSWORD, user, null, CONSTANT_BO );
+        AccessLogService.getInstance( ).info( AccessLoggerConstants.EVENT_TYPE_CONNECT, CONSTANT_ACTION_DORESETPASSOWRD, user, null, CONSTANT_BO );
 
         return AdminMessageService.getMessageUrl( request, MESSAGE_RESET_PASSORWD_SUCCESS, JSP_URL_ADMIN_LOGIN, AdminMessage.TYPE_INFO );
     }
