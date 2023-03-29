@@ -174,6 +174,7 @@ public final class ThemesService
         if ( isValid( strTheme ) )
         {
             Cookie cookie = new Cookie( COOKIE_NAME, strTheme );
+            cookie.setHttpOnly(true);
             cookie.setSecure( true );
             response.addCookie( cookie );
         }
