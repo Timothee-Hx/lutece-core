@@ -467,6 +467,7 @@ public class StyleSheetJspBean extends AdminFeaturesPageJspBean
         {
             SAXParserFactory factory = SAXParserFactory.newInstance( );
             SAXParser analyzer = factory.newSAXParser( );
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             InputSource is = new InputSource( new ByteArrayInputStream( baXslSource ) );
             analyzer.getXMLReader( ).parse( is );
         }
