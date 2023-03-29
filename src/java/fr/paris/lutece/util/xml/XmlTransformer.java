@@ -46,6 +46,7 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Templates;
@@ -108,7 +109,9 @@ public final class XmlTransformer
             // only one thread can use transformer
             try
             {
-                result = TransformerFactory.newInstance( ).newTemplates( stylesheet );
+                TransformerFactory factory = TransformerFactory.newInstance( );
+                factory.setFeature( XMLConstants.FEATURE_SECURE_PROCESSING, true );
+                result = factory.newTemplates(stylesheet);
                 AppLogService.debug( " --  XML Templates instantiation : strStyleSheetId= {}", strStyleSheetId );
             }
             catch( TransformerConfigurationException e )
