@@ -208,8 +208,8 @@ class DaemonScheduler implements Runnable, IDaemonScheduler
             }
             catch( InterruptedException e )
             {
-                // We were asked to stop
-                break;
+                AppLogService.error( "DaemonScheduler interrupted", e );
+                Thread.currentThread().interrupt();
             }
             // execute them
             for ( DaemonEntry entry : queued )
@@ -281,6 +281,7 @@ class DaemonScheduler implements Runnable, IDaemonScheduler
         catch( InterruptedException e )
         {
             AppLogService.error( "Interruped while waiting for daemons termination", e );
+            Thread.currentThread().interrupt();
         }
     }
 
