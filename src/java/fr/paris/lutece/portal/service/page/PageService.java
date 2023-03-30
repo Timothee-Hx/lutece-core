@@ -158,6 +158,7 @@ public class PageService implements IPageService, ImageResourceProvider, PageEve
     private PageCacheService _cachePages;
     private PortletCacheService _cachePortlets;
 
+    private final Object _lock = new Object( );
     /**
      * Creates a new PageService object.
      * 
@@ -285,14 +286,12 @@ public class PageService implements IPageService, ImageResourceProvider, PageEve
 
         // we add the key in the memory key only if cache is enable
         String strKey = getKey( htParamRequest, nMode, user );
-
-        // get page from cache
         String strPage = (String) _cachePages.getFromCache( strKey );
 
         if ( strPage == null )
         {
             // only one thread can evaluate the page
-            synchronized( strKey )
+            synchronized( _lock )
             {
                 // can be useful if an other thread had evaluate the
                 // page
