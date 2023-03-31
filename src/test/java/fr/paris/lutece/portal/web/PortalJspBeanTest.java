@@ -146,7 +146,7 @@ public class PortalJspBeanTest extends LuteceTestCase
     @Override
     public void tearDown( ) throws Exception
     {
-        LocalVariables.setLocal( null, null, null );
+        LocalVariables.unload();
         super.tearDown( );
     }
 }

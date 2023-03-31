@@ -71,6 +71,16 @@ public final class LocalVariables
     }
 
     /**
+     * Remove thread locals variables
+     */
+    public static void unload()
+    {
+        _tlConfig.remove();
+        _tlRequest.remove();
+        _tlResponse.remove();
+    }
+
+    /**
      * Read <code>ServletConfig</code> associate to the current thread
      *
      * @return the <code>ServletConfig</code> associate to the current thread

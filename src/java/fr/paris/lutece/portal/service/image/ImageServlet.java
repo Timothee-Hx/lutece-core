@@ -132,7 +132,7 @@ public class ImageServlet extends HttpServlet
         }
         finally
         {
-            LocalVariables.setLocal( null, null, null );
+            LocalVariables.unload();
         }
     }
 
