@@ -41,6 +41,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import fr.paris.lutece.portal.service.util.AppLogService;
 import org.apache.commons.collections.CollectionUtils;
 
 import fr.paris.lutece.portal.business.portlet.PortletHome;
@@ -350,15 +351,19 @@ public class StylesJspBean extends AdminFeaturesPageJspBean
                 parameters.put( Parameters.STYLESHEET_ID, Integer.toString( styleSheet.getId( ) ) );
                 parameters.put( Parameters.STYLE_ID, Integer.toString( styleSheet.getStyleId( ) ) );
                 parameters.put( SecurityTokenService.PARAMETER_TOKEN, SecurityTokenService.getInstance( ).getToken( request, JSP_DO_REMOVE_STYLESHEET ) );
-                return AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_DELETE_STYLESHEET, args, null, JSP_DO_REMOVE_STYLESHEET, null,
+                String strUrl = AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_DELETE_STYLESHEET, args, null, JSP_DO_REMOVE_STYLESHEET, null,
                         AdminMessage.TYPE_CONFIRMATION, parameters );
+                // check if the string is a url
+                if ( strUrl.startsWith( "http" ) || strUrl.startsWith( "https" ) )
+                {
+                    return strUrl;
+                }
             }
         }
 
         Map<String, String> parameters = new HashMap<>( );
         parameters.put( Parameters.STYLE_ID, Integer.toString( nId ) );
         parameters.put( SecurityTokenService.PARAMETER_TOKEN, SecurityTokenService.getInstance( ).getToken( request, JSP_DO_REMOVE_STYLE ) );
-
         return AdminMessageService.getMessageUrl( request, MESSAGE_CONFIRM_DELETE_STYLE, JSP_DO_REMOVE_STYLE, AdminMessage.TYPE_CONFIRMATION, parameters );
     }
 
