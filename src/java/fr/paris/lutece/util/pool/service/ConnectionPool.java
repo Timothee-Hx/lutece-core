@@ -35,6 +35,7 @@ package fr.paris.lutece.util.pool.service;
 
 import fr.paris.lutece.portal.service.util.AppException;
 
+import fr.paris.lutece.portal.service.util.AppLogService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.Logger;
 
@@ -187,8 +188,8 @@ public class ConnectionPool implements DataSource
             }
             catch( InterruptedException e )
             {
-                _logger.debug( "A connection has been released by another thread.", e );
-            }
+                AppLogService.error("Database connection interrupted"+ e.getMessage());
+                Thread.currentThread().interrupt();            }
 
             remaining = timeout - ( System.currentTimeMillis( ) - startTime );
 
