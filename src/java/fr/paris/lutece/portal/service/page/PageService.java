@@ -157,8 +157,7 @@ public class PageService implements IPageService, ImageResourceProvider, PageEve
     private ICacheKeyService _cksPortlet;
     private PageCacheService _cachePages;
     private PortletCacheService _cachePortlets;
-
-    private final Object _lock = new Object( );
+    private static final Object _lockPageService = new Object( );
     /**
      * Creates a new PageService object.
      * 
@@ -291,7 +290,7 @@ public class PageService implements IPageService, ImageResourceProvider, PageEve
         if ( strPage == null )
         {
             // only one thread can evaluate the page
-            synchronized( _lock )
+            synchronized( _lockPageService )
             {
                 // can be useful if an other thread had evaluate the
                 // page
