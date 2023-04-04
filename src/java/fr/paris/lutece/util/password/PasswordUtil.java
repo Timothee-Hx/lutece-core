@@ -49,6 +49,7 @@ import java.util.Random;
  */
 public final class PasswordUtil
 {
+    public static final String BEAN_NAME = "passwordFactory";
     public static final String PROPERTY_PASSWORD_SIZE = "randomPassword.size";
     public static final int CONSTANT_DEFAULT_RANDOM_PASSWORD_SIZE = 16;
     private static final int CONSTANT_NUMBER_LETTERS = 26;
