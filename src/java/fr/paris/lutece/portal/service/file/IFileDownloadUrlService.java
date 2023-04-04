@@ -47,7 +47,6 @@ import fr.paris.lutece.portal.service.util.AppPropertiesService;
  */
 public interface IFileDownloadUrlService extends Serializable
 {
-    static final int LINK_VALIDITY_TIME = AppPropertiesService.getPropertyInt( "lutece.file.download.validity", 0 );
 
     /**
      * get Front Office user download URL
@@ -129,6 +128,6 @@ public interface IFileDownloadUrlService extends Serializable
      */
     default int getValidityTime( )
     {
-        return LINK_VALIDITY_TIME;
+        return FileService.LINK_VALIDITY_TIME;
     }
 }

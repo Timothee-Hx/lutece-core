@@ -35,6 +35,8 @@ package fr.paris.lutece.portal.service.file;
 
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 import fr.paris.lutece.portal.service.util.AppException;
+import fr.paris.lutece.portal.service.util.AppPropertiesService;
+
 import java.util.List;
 
 /**
@@ -43,6 +45,8 @@ import java.util.List;
  */
 public class FileService
 {
+
+    public static final int LINK_VALIDITY_TIME = AppPropertiesService.getPropertyInt( "lutece.file.download.validity", 0 );
 
     // parameters
     public static final String PARAMETER_FILE_ID = "file_id";
