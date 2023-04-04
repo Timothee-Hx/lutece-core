@@ -44,6 +44,7 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 
 import fr.paris.lutece.portal.business.xml.CommonXmlTags;
+import fr.paris.lutece.portal.service.cache.PathCacheService;
 import org.apache.commons.lang3.StringUtils;
 
 import fr.paris.lutece.portal.business.xml.XmlContent;
@@ -428,7 +429,7 @@ public final class PortalService
      */
     public static String getXPagePathContent( String strXPageName, int nMode, HttpServletRequest request )
     {
-        final IPathCacheService pathCacheService = SpringContextService.getBean( IPathCacheService.BEAN_NAME );
+        final IPathCacheService pathCacheService = SpringContextService.getBean( PathCacheService.BEAN_NAME );
 
         final String strKey = pathCacheService.getKey( strXPageName, nMode, request );
 
@@ -673,7 +674,7 @@ public final class PortalService
      */
     public static String getXPagePathContent( String strXPageName, int nMode, String strTitlesUrls, HttpServletRequest request )
     {
-        final IPathCacheService pathCacheService = SpringContextService.getBean( IPathCacheService.BEAN_NAME );
+        final IPathCacheService pathCacheService = SpringContextService.getBean( PathCacheService.BEAN_NAME );
 
         final String strKey = pathCacheService.getKey( strXPageName, nMode, strTitlesUrls, request );
 
