@@ -46,8 +46,6 @@ import org.apache.logging.log4j.Logger;
  */
 public interface ConnectionService
 {
-    int INFO_NOT_AVAILABLE = -1;
-
     /**
      * Get a connection
      * 

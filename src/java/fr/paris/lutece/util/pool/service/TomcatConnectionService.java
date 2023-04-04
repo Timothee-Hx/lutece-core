@@ -174,7 +174,7 @@ public class TomcatConnectionService implements ConnectionService
     @Override
     public int getCurrentConnections( )
     {
-        return ConnectionService.INFO_NOT_AVAILABLE;
+        return LuteceConnectionService.INFO_NOT_AVAILABLE;
     }
 
     /**
@@ -183,7 +183,7 @@ public class TomcatConnectionService implements ConnectionService
     @Override
     public int getMaxConnections( )
     {
-        return ConnectionService.INFO_NOT_AVAILABLE;
+        return LuteceConnectionService.INFO_NOT_AVAILABLE;
     }
 
     /**
