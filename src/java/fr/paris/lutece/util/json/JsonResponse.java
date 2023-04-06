@@ -40,7 +40,7 @@ import java.io.Serializable;
  * JsonResponse
  *
  */
-public class JsonResponse extends AbstractJsonResponse implements Serializable
+public class JsonResponse extends AbstractJsonResponse 
 {
     private static final long serialVersionUID = -7811967393400814987L;
     private transient Object _result;
