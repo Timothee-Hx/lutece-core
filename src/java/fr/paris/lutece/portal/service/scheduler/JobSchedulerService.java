@@ -77,7 +77,7 @@ public final class JobSchedulerService
     /**
      * Initialize the service.
      */
-    private void init( )
+    private static void init( )
     {
         SchedulerFactory factory = new StdSchedulerFactory( );
 
