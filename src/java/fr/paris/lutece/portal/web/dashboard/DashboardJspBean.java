@@ -56,6 +56,7 @@ import fr.paris.lutece.util.string.StringUtil;
  */
 public class DashboardJspBean extends AdminFeaturesPageJspBean
 {
+    private static final long serialVersionUID = 1;
     // Right
     public static final String RIGHT_MANAGE_DASHBOARD = "CORE_DASHBOARD_MANAGEMENT";
 
