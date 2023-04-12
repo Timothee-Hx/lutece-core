@@ -10,7 +10,7 @@
     <groupId>fr.paris.lutece</groupId>
     <artifactId>lutece-core</artifactId>
     <packaging>lutece-core</packaging>
-    <version>7.0.9-SNAPSHOT</version>
+    <version>7.1.0-SNAPSHOT</version>
     <name>Lutece</name>
     <url>http://dev.lutece.paris.fr/</url>
 
@@ -369,7 +369,29 @@
             <version>1.0.0</version>
         </dependency>
 
-        
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.39.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>2.39.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.39.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-jaxb</artifactId>
+            <version>2.39.1</version>
+        </dependency>
     </dependencies>
 
     <scm>
