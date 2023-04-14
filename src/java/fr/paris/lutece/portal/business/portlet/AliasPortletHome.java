@@ -61,10 +61,7 @@ public class AliasPortletHome extends PortletHome
         if ( _singleton == null )
             synchronized ( _aliasPortletHomeSingletonLock )
             {
-                if ( _singleton == null )
-                {
                     _singleton = this;
-                }
             }
     }
 
