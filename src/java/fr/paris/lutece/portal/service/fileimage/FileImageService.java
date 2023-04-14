@@ -106,7 +106,10 @@ public class FileImageService implements ImageResourceProvider
     public ImageResource getImageResource( int nIdResource )
     {
         
-        if ( !isAuthorized( nIdResource ) ) return null;
+        if ( !isAuthorized( nIdResource ) )
+        {
+            return null;
+        }
         
         File file = FileHome.findByPrimaryKey( nIdResource );
 
