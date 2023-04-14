@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -157,7 +157,7 @@ public class PageService implements IPageService, ImageResourceProvider, PageEve
     private ICacheKeyService _cksPortlet;
     private PageCacheService _cachePages;
     private PortletCacheService _cachePortlets;
-
+    private static final Object _lockPageService = new Object( );
     /**
      * Creates a new PageService object.
      * 
@@ -285,14 +285,12 @@ public class PageService implements IPageService, ImageResourceProvider, PageEve
 
         // we add the key in the memory key only if cache is enable
         String strKey = getKey( htParamRequest, nMode, user );
-
-        // get page from cache
         String strPage = (String) _cachePages.getFromCache( strKey );
 
         if ( strPage == null )
         {
             // only one thread can evaluate the page
-            synchronized( strKey )
+            synchronized( _lockPageService )
             {
                 // can be useful if an other thread had evaluate the
                 // page

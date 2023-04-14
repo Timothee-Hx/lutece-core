@@ -16,7 +16,7 @@
     }
     finally
     {
-        LocalVariables.setLocal( null, null, null );
+        LocalVariables.unload();
     }
 %>
 

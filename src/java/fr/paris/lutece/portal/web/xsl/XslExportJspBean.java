@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -518,6 +518,7 @@ public class XslExportJspBean extends PluginAdminPageJspBean
         {
             SAXParserFactory factory = SAXParserFactory.newInstance( );
             SAXParser analyzer = factory.newSAXParser( );
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             InputSource is = new InputSource( new ByteArrayInputStream( baXslSource ) );
             analyzer.getXMLReader( ).parse( is );
         }

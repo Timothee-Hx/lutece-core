@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -174,6 +174,7 @@ public final class ThemesService
         if ( isValid( strTheme ) )
         {
             Cookie cookie = new Cookie( COOKIE_NAME, strTheme );
+            cookie.setHttpOnly(true);
             cookie.setSecure( true );
             response.addCookie( cookie );
         }
