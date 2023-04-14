@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,11 +86,11 @@ public abstract class MVCAdminJspBean extends PluginAdminPageJspBean
 
     // instance vars
     private static Logger _logger = MVCUtils.getLogger( );
-    private List<ErrorMessage> _listErrors = new ArrayList<>( );
-    private List<ErrorMessage> _listInfos = new ArrayList<>( );
-    private List<ErrorMessage> _listWarnings = new ArrayList<>( );
-    private Controller _controller = getClass( ).getAnnotation( Controller.class );
-    private HttpServletResponse _response;
+    private transient List<ErrorMessage> _listErrors = new ArrayList<>( );
+    private transient List<ErrorMessage> _listInfos = new ArrayList<>( );
+    private transient List<ErrorMessage> _listWarnings = new ArrayList<>( );
+    private transient Controller _controller = getClass( ).getAnnotation( Controller.class );
+    private transient HttpServletResponse _response;
 
     /**
      * Process request as a controller

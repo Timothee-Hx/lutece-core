@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -153,7 +153,7 @@ public abstract class LuteceUser implements Principal, Serializable, Cloneable, 
     private String _strAuthenticationService;
 
     /** Authentication Service impl */
-    private LuteceAuthentication _luteceAuthenticationService;
+    private transient LuteceAuthentication _luteceAuthenticationService;
 
     /** Authentication Service */
     private String _strAuthenticationType;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ import fr.paris.lutece.portal.web.l10n.LocaleService;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.Serializable;
+import java.io.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -85,7 +85,7 @@ public class AdminUser implements Serializable, AdminWorkgroupResource, User
     private Timestamp _accountMaxValidDate;
     private Timestamp _dateLastLogin;
     private String _strWorkgroupKey;
-    private HashMap<String, Object> _userInfo = new HashMap<>( );
+    private transient HashMap<String, Object> _userInfo = new HashMap<>( );
     /** User's workgroups */
     private List<String> _workgroups = new ArrayList<String>( );
 
@@ -95,9 +95,9 @@ public class AdminUser implements Serializable, AdminWorkgroupResource, User
     private HashMap<String, Right> _rights = new HashMap<>( );
 
     /**
-     * User's roles. We use a HashMap instead of a Map so that the field is forced to be serializable.
+     * User's roles. We use a HashMap instead of a Map so that the field is forced to be serializable. TODO: update this comment
      */
-    private HashMap<String, UserRole> _roles = new HashMap<>( );
+    private transient HashMap<String, UserRole> _roles = new HashMap<>( );
 
     /** Authentication Service */
     private String _strAuthenticationService;

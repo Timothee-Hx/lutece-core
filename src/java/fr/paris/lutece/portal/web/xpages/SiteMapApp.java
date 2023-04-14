@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -81,7 +81,7 @@ public class SiteMapApp implements XPageApplication
     private static final String PROPERTY_SERVICE_NAME = "portal.site.serviceName.siteMapService";
     private static final String PROPERTY_PATH_LABEL = "portal.site.site_map.pathLabel";
     private static final String PROPERTY_PAGE_TITLE = "portal.site.site_map.pageTitle";
-
+    private static final Object _lockSiteMapApp = new Object( );
     /**
      * Creates a new SiteMapPage object
      */
@@ -134,7 +134,7 @@ public class SiteMapApp implements XPageApplication
             // Add it to the cache
             if ( siteMapCacheService.isCacheEnable( ) )
             {
-                synchronized( strKey )
+                synchronized( _lockSiteMapApp )
                 {
                     siteMapCacheService.putInCache( strKey, strPage );
                 }

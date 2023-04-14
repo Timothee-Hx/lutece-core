@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -68,6 +68,16 @@ public final class LocalVariables
         _tlConfig.set( config );
         _tlRequest.set( request );
         _tlResponse.set( response );
+    }
+
+    /**
+     * Remove thread locals variables
+     */
+    public static void unload()
+    {
+        _tlConfig.remove();
+        _tlRequest.remove();
+        _tlResponse.remove();
     }
 
     /**

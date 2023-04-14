@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -99,13 +99,15 @@ public abstract class MVCApplication implements XPageApplication
     private static final String CONTENT_TYPE_JSON = "application/json";
     private static final String CONTENT_TYPE_XML = "application/xml";
 
+    private static final String MVN_ERROR_MESSAGE = "MVC Error dispaching view and action ";
+
     // instance vars
     private static Logger _logger = MVCUtils.getLogger( );
-    private List<ErrorMessage> _listErrors = new ArrayList<>( );
-    private List<ErrorMessage> _listInfos = new ArrayList<>( );
-    private List<ErrorMessage> _listWarnings = new ArrayList<>( );
-    private MVCMessageBox _messageBox;
-    private Controller _controller = getClass( ).getAnnotation( Controller.class );
+    private transient List<ErrorMessage> _listErrors = new ArrayList<>( );
+    private transient List<ErrorMessage> _listInfos = new ArrayList<>( );
+    private transient List<ErrorMessage> _listWarnings = new ArrayList<>( );
+    private transient MVCMessageBox _messageBox;
+    private transient Controller _controller = getClass( ).getAnnotation( Controller.class );
 
     /**
      * Returns the content of the page
@@ -196,14 +198,14 @@ public abstract class MVCApplication implements XPageApplication
 
             if ( e.getTargetException( ) instanceof RuntimeException )
             {
-                throw new AppException( "MVC Error dispaching view and action ", (RuntimeException) e.getTargetException( ) );
+                throw new AppException(MVN_ERROR_MESSAGE, (RuntimeException) e.getTargetException( ) );
             }
 
-            throw new AppException( "MVC Error dispaching view and action ", e );
+            throw new AppException(MVN_ERROR_MESSAGE, e );
         }
         catch( IllegalAccessException e )
         {
-            throw new AppException( "MVC Error dispaching view and action ", e );
+            throw new AppException(MVN_ERROR_MESSAGE, e );
         }
     }
 
