@@ -56,7 +56,7 @@ public class EntityManagerService
      * @param mapFactories
      *            The factories map
      */
-    public void setMapFactories( Map<String, EntityManagerFactory> mapFactories )
+    public static void setMapFactories( Map<String, EntityManagerFactory> mapFactories )
     {
         _mapFactories = mapFactories;
     }
