@@ -52,14 +52,8 @@ public final class RightDAO implements IRightDAO
             + " VALUES ( ?, ?, ?, ? , ?, ?, ?, ?, ?, ?, ? )";
     private static final String SQL_QUERY_UPDATE = " UPDATE core_admin_right SET name = ?, admin_url = ? , description = ? , "
             + " plugin_name = ?, id_feature_group = ?, icon_url = ?, level_right = ?, documentation_url = ?, id_order = ?, is_external_feature = ? WHERE id_right = ?";
-    private static final String SQL_QUERY_SELECTALL_EXTERNAL_FEATURES = " SELECT id_right, name, level_right, admin_url, description, plugin_name, id_feature_group, icon_url, documentation_url, id_order, is_external_feature "
-            + " FROM core_admin_right WHERE level_right >= ? AND is_external_feature = 1 ORDER BY id_order ASC, id_right ASC";
     private static final String SQL_QUERY_SELECTALL = " SELECT id_right, name, level_right, admin_url, description, plugin_name, id_feature_group, icon_url, documentation_url, id_order, is_external_feature "
-            + " FROM core_admin_right WHERE level_right >= ? ORDER BY id_order ASC, id_right ASC";
-    private static final String SQL_QUERY_SELECTALL_FOR_FEATUREGROUP = " SELECT id_right, name, level_right, admin_url, description, plugin_name, id_feature_group, icon_url, documentation_url, id_order, is_external_feature "
-            + " FROM core_admin_right WHERE id_feature_group = ? ORDER BY id_order ASC, id_right ASC";
-    private static final String SQL_QUERY_SELECTALL_FOR_FEATUREGROUP_IS_NULL = " SELECT id_right, name, level_right, admin_url, description, plugin_name, id_feature_group, icon_url, documentation_url, id_order, is_external_feature "
-            + " FROM core_admin_right WHERE id_feature_group IS null ORDER BY id_order ASC, id_right ASC";
+            + " FROM core_admin_right WHERE level_right >= ? ORDER BY id_order ASC, id_right ASC ";
     private static final String SQL_QUERY_DELETE_USERRIGHT = " DELETE FROM core_user_right WHERE id_right = ?";
     private static final String SQL_QUERY_DELETE_ADMINRIGHT = " DELETE FROM core_admin_right WHERE id_right = ?";
 
@@ -250,7 +244,7 @@ public final class RightDAO implements IRightDAO
     public Collection<Right> selectExternalRightsList( int nLevel )
     {
         Collection<Right> rightList = new ArrayList<>( );
-        try ( DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL_EXTERNAL_FEATURES ) )
+        try ( DAOUtil daoUtil = new DAOUtil( SQL_QUERY_SELECTALL ) )
         {
             daoUtil.setInt( 1, nLevel );
             daoUtil.executeQuery( );
@@ -289,11 +283,11 @@ public final class RightDAO implements IRightDAO
     public Collection<Right> selectRightsList( String strFeatureGroup )
     {
         Collection<Right> rightList = new ArrayList<>( );
-        String strQuery = SQL_QUERY_SELECTALL_FOR_FEATUREGROUP;
+        String strQuery = SQL_QUERY_SELECTALL;
 
         if ( strFeatureGroup == null )
         {
-            strQuery = SQL_QUERY_SELECTALL_FOR_FEATUREGROUP_IS_NULL;
+            strQuery = SQL_QUERY_SELECTALL;
         }
 
         try ( DAOUtil daoUtil = new DAOUtil( strQuery ) )

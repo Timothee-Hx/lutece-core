@@ -99,6 +99,8 @@ public abstract class MVCApplication implements XPageApplication
     private static final String CONTENT_TYPE_JSON = "application/json";
     private static final String CONTENT_TYPE_XML = "application/xml";
 
+    private static final String MVN_ERROR_MESSAGE = "MVC Error dispaching view and action ";
+
     // instance vars
     private static Logger _logger = MVCUtils.getLogger( );
     private List<ErrorMessage> _listErrors = new ArrayList<>( );
@@ -196,14 +198,14 @@ public abstract class MVCApplication implements XPageApplication
 
             if ( e.getTargetException( ) instanceof RuntimeException )
             {
-                throw new AppException( "MVC Error dispaching view and action ", (RuntimeException) e.getTargetException( ) );
+                throw new AppException(MVN_ERROR_MESSAGE, (RuntimeException) e.getTargetException( ) );
             }
 
-            throw new AppException( "MVC Error dispaching view and action ", e );
+            throw new AppException(MVN_ERROR_MESSAGE, e );
         }
         catch( IllegalAccessException e )
         {
-            throw new AppException( "MVC Error dispaching view and action ", e );
+            throw new AppException(MVN_ERROR_MESSAGE, e );
         }
     }
 
