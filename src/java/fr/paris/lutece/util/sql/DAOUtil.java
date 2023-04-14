@@ -3330,7 +3330,6 @@ public class DAOUtil implements AutoCloseable
     /**
      * {@inheritDoc}
      */
-    @Override
     protected void finalize( ) throws Throwable
     {
         if ( !_bReleased )
