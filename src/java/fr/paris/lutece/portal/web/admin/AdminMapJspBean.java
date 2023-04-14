@@ -33,7 +33,8 @@
  */
 package fr.paris.lutece.portal.web.admin;
 
-import fr.paris.lutece.portal.business.XmlContent;
+import fr.paris.lutece.portal.business.xml.CommonXmlTags;
+import fr.paris.lutece.portal.business.xml.XmlContent;
 import fr.paris.lutece.portal.business.page.Page;
 import fr.paris.lutece.portal.business.page.PageHome;
 import fr.paris.lutece.portal.business.portalcomponent.PortalComponentHome;
@@ -183,16 +184,16 @@ public class AdminMapJspBean extends AdminFeaturesPageJspBean
             bAuthorizationPage = RBACService.isAuthorized( Page.RESOURCE_TYPE, strPageId, PageResourceIdService.PERMISSION_VIEW, user );
         }
 
-        XmlUtil.beginElement( strXmlArborescence, XmlContent.TAG_PAGE );
+        XmlUtil.beginElement( strXmlArborescence, CommonXmlTags.TAG_PAGE );
 
         if ( bAuthorizationPage )
         {
-            XmlUtil.addElementHtml( strXmlArborescence, XmlContent.TAG_CURRENT_PAGE_ID, strCurrentPageId );
-            XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_ID, page.getId( ) );
-            XmlUtil.addElementHtml( strXmlArborescence, XmlContent.TAG_PAGE_NAME, page.getName( ) );
-            XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_DESCRIPTION, page.getDescription( ) );
-            XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_LEVEL, nLevel );
-            XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PARENT_PAGE_ID, page.getParentPageId( ) );
+            XmlUtil.addElementHtml( strXmlArborescence, CommonXmlTags.TAG_CURRENT_PAGE_ID, strCurrentPageId );
+            XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_ID, page.getId( ) );
+            XmlUtil.addElementHtml( strXmlArborescence, CommonXmlTags.TAG_PAGE_NAME, page.getName( ) );
+            XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_DESCRIPTION, page.getDescription( ) );
+            XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_LEVEL, nLevel );
+            XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PARENT_PAGE_ID, page.getParentPageId( ) );
             XmlUtil.addElement( strXmlArborescence, TAG_PAGE_ROLE, page.getRole( ) );
 
             AdminPageJspBean adminPage = new AdminPageJspBean( );
@@ -203,12 +204,12 @@ public class AdminMapJspBean extends AdminFeaturesPageJspBean
 
                 if ( nImageLength >= 1 )
                 {
-                    XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_IMAGE, adminPage.getResourceImagePage( page, strPageId ) );
+                    XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_IMAGE, adminPage.getResourceImagePage( page, strPageId ) );
                 }
             }
         }
 
-        XmlUtil.beginElement( strXmlArborescence, XmlContent.TAG_CHILD_PAGES_LIST );
+        XmlUtil.beginElement( strXmlArborescence, CommonXmlTags.TAG_CHILD_PAGES_LIST );
 
         for ( Page pageChild : PageHome.getChildPagesMinimalData( nPageId ) )
         {
@@ -216,13 +217,13 @@ public class AdminMapJspBean extends AdminFeaturesPageJspBean
             strCssId.append( "initializeMenu('menu" + pageChild.getId( ) + "' , 'actuator" + pageChild.getId( ) + "');\n" );
         }
 
-        XmlUtil.endElement( strXmlArborescence, XmlContent.TAG_CHILD_PAGES_LIST );
+        XmlUtil.endElement( strXmlArborescence, CommonXmlTags.TAG_CHILD_PAGES_LIST );
 
         if ( bAuthorizationPage )
         {
             XmlUtil.addElementHtml( strXmlArborescence, TAG_CSS_ID, strCssId.toString( ) );
         }
 
-        XmlUtil.endElement( strXmlArborescence, XmlContent.TAG_PAGE );
+        XmlUtil.endElement( strXmlArborescence, CommonXmlTags.TAG_PAGE );
     }
 }

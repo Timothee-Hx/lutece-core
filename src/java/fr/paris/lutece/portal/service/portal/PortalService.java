@@ -43,9 +43,11 @@ import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
+import fr.paris.lutece.portal.business.xml.CommonXmlTags;
+import fr.paris.lutece.portal.service.cache.PathCacheService;
 import org.apache.commons.lang3.StringUtils;
 
-import fr.paris.lutece.portal.business.XmlContent;
+import fr.paris.lutece.portal.business.xml.XmlContent;
 import fr.paris.lutece.portal.business.page.Page;
 import fr.paris.lutece.portal.business.page.PageHome;
 import fr.paris.lutece.portal.business.portalcomponent.PortalComponentHome;
@@ -216,17 +218,17 @@ public final class PortalService
     {
         StringBuffer strXml = new StringBuffer( );
         strXml.append( XmlUtil.getXmlHeader( ) );
-        XmlUtil.beginElement( strXml, XmlContent.TAG_CHILD_PAGES_LIST );
+        XmlUtil.beginElement( strXml, CommonXmlTags.TAG_CHILD_PAGES_LIST );
 
         for ( Page page : listPages )
         {
-            XmlUtil.beginElement( strXml, XmlContent.TAG_PAGE );
-            XmlUtil.addElement( strXml, XmlContent.TAG_PAGE_ID, page.getId( ) );
-            XmlUtil.addElementHtml( strXml, XmlContent.TAG_PAGE_NAME, page.getName( ) );
-            XmlUtil.endElement( strXml, XmlContent.TAG_PAGE );
+            XmlUtil.beginElement( strXml, CommonXmlTags.TAG_PAGE );
+            XmlUtil.addElement( strXml, CommonXmlTags.TAG_PAGE_ID, page.getId( ) );
+            XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_PAGE_NAME, page.getName( ) );
+            XmlUtil.endElement( strXml, CommonXmlTags.TAG_PAGE );
         }
 
-        XmlUtil.endElement( strXml, XmlContent.TAG_CHILD_PAGES_LIST );
+        XmlUtil.endElement( strXml, CommonXmlTags.TAG_CHILD_PAGES_LIST );
 
         return strXml.toString( );
     }
@@ -427,7 +429,7 @@ public final class PortalService
      */
     public static String getXPagePathContent( String strXPageName, int nMode, HttpServletRequest request )
     {
-        final IPathCacheService pathCacheService = SpringContextService.getBean( IPathCacheService.BEAN_NAME );
+        final IPathCacheService pathCacheService = SpringContextService.getBean( PathCacheService.BEAN_NAME );
 
         final String strKey = pathCacheService.getKey( strXPageName, nMode, request );
 
@@ -640,18 +642,18 @@ public final class PortalService
     {
         StringBuffer strXml = new StringBuffer( );
         strXml.append( XmlUtil.getXmlHeader( ) );
-        XmlUtil.beginElement( strXml, XmlContent.TAG_CHILD_PAGES_LIST );
+        XmlUtil.beginElement( strXml, CommonXmlTags.TAG_CHILD_PAGES_LIST );
 
         Page homePage = PageHome.getPage( getRootPageId( ) );
 
-        XmlUtil.beginElement( strXml, XmlContent.TAG_PAGE );
-        XmlUtil.addElement( strXml, XmlContent.TAG_PAGE_ID, homePage.getId( ) );
-        XmlUtil.addElementHtml( strXml, XmlContent.TAG_PAGE_NAME, homePage.getName( ) );
-        XmlUtil.endElement( strXml, XmlContent.TAG_PAGE );
+        XmlUtil.beginElement( strXml, CommonXmlTags.TAG_PAGE );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_PAGE_ID, homePage.getId( ) );
+        XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_PAGE_NAME, homePage.getName( ) );
+        XmlUtil.endElement( strXml, CommonXmlTags.TAG_PAGE );
 
         strXml.append( strXmlExtend );
 
-        XmlUtil.endElement( strXml, XmlContent.TAG_CHILD_PAGES_LIST );
+        XmlUtil.endElement( strXml, CommonXmlTags.TAG_CHILD_PAGES_LIST );
 
         return strXml.toString( );
     }
@@ -672,7 +674,7 @@ public final class PortalService
      */
     public static String getXPagePathContent( String strXPageName, int nMode, String strTitlesUrls, HttpServletRequest request )
     {
-        final IPathCacheService pathCacheService = SpringContextService.getBean( IPathCacheService.BEAN_NAME );
+        final IPathCacheService pathCacheService = SpringContextService.getBean( PathCacheService.BEAN_NAME );
 
         final String strKey = pathCacheService.getKey( strXPageName, nMode, strTitlesUrls, request );
 

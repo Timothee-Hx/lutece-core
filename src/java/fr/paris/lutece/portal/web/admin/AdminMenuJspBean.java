@@ -43,6 +43,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import fr.paris.lutece.util.password.PasswordUtil;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -167,7 +168,7 @@ public class AdminMenuJspBean implements Serializable
         model.put( MARK_USER, user );
         if ( user.isAdmin( ) )
         {
-        	model.put( MARK_LIST_LOGGER_INFO, AppLogService.getLoggersInfo( ) );
+              model.put( MARK_LIST_LOGGER_INFO, AppLogService.getLoggersInfo( ) );
         }
 
         String strLogoutUrl = AppPropertiesService.getProperty( PROPERTY_LOGOUT_URL );
@@ -492,7 +493,7 @@ public class AdminMenuJspBean implements Serializable
         }
 
         // Successful tests
-        IPasswordFactory passwordFactory = SpringContextService.getBean( IPasswordFactory.BEAN_NAME );
+        IPasswordFactory passwordFactory = SpringContextService.getBean(PasswordUtil.BEAN_NAME );
         userStored.setPassword( passwordFactory.getPasswordFromCleartext( strNewPassword ) );
         userStored.setPasswordReset( Boolean.FALSE );
         userStored.setPasswordMaxValidDate( AdminUserService.getPasswordMaxValidDate( ) );

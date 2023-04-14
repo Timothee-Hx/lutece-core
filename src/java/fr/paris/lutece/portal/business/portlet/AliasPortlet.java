@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.portal.business.portlet;
 
+import fr.paris.lutece.portal.business.xml.CommonXmlTags;
 import fr.paris.lutece.portal.service.message.SiteMessageException;
 import fr.paris.lutece.util.xml.XmlUtil;
 
@@ -116,16 +117,16 @@ public class AliasPortlet extends Portlet
         // gets the portlet parent
         Portlet portlet = PortletHome.findByPrimaryKey( getAliasId( ) );
         String strXmlAlias = portlet.getXml( request );
-        String strTagPortletName = "</" + TAG_PORTLET_NAME + ">";
+        String strTagPortletName = "</" + CommonXmlTags.TAG_PORTLET_NAME + ">";
         int indexDeb = strXmlAlias.indexOf( strTagPortletName );
-        int indexFin = strXmlAlias.indexOf( "</" + TAG_PORTLET + ">" );
+        int indexFin = strXmlAlias.indexOf( "</" + CommonXmlTags.TAG_PORTLET + ">" );
         strXmlAlias = strXmlAlias.substring( indexDeb + strTagPortletName.length( ), indexFin );
 
         StringBuffer buffXml = new StringBuffer( );
-        XmlUtil.beginElement( buffXml, TAG_PORTLET );
-        XmlUtil.addElement( buffXml, TAG_PORTLET_NAME, getName( ) );
+        XmlUtil.beginElement( buffXml, CommonXmlTags.TAG_PORTLET );
+        XmlUtil.addElement( buffXml, CommonXmlTags.TAG_PORTLET_NAME, getName( ) );
         buffXml.append( strXmlAlias );
-        XmlUtil.endElement( buffXml, TAG_PORTLET );
+        XmlUtil.endElement( buffXml, CommonXmlTags.TAG_PORTLET );
 
         return buffXml.toString( );
     }

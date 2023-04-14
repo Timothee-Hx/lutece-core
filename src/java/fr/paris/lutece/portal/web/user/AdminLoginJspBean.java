@@ -64,6 +64,7 @@ import fr.paris.lutece.util.ReferenceList;
 import fr.paris.lutece.util.html.HtmlTemplate;
 import fr.paris.lutece.util.http.SecurityUtil;
 import fr.paris.lutece.util.password.IPasswordFactory;
+import fr.paris.lutece.util.password.PasswordUtil;
 import fr.paris.lutece.util.string.StringUtil;
 import fr.paris.lutece.util.url.UrlItem;
 import java.io.IOException;
@@ -595,7 +596,7 @@ public class AdminLoginJspBean implements Serializable
 
         // all checks are OK. Proceed to password change
         user.setPasswordMaxValidDate( AdminUserService.getPasswordMaxValidDate( ) );
-        IPasswordFactory passwordFactory = SpringContextService.getBean( IPasswordFactory.BEAN_NAME );
+        IPasswordFactory passwordFactory = SpringContextService.getBean( PasswordUtil.BEAN_NAME );
         user.setPassword( passwordFactory.getPasswordFromCleartext( strNewPassword ) );
         AdminUserHome.update( user );
         AdminUserHome.insertNewPasswordInHistory( user.getPassword( ), user.getUserId( ) );

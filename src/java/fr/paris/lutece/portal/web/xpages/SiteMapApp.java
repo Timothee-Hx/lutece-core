@@ -33,7 +33,8 @@
  */
 package fr.paris.lutece.portal.web.xpages;
 
-import fr.paris.lutece.portal.business.XmlContent;
+import fr.paris.lutece.portal.business.xml.CommonXmlTags;
+import fr.paris.lutece.portal.business.xml.XmlContent;
 import fr.paris.lutece.portal.business.page.Page;
 import fr.paris.lutece.portal.business.page.PageHome;
 import fr.paris.lutece.portal.business.portalcomponent.PortalComponentHome;
@@ -261,11 +262,11 @@ public class SiteMapApp implements XPageApplication
 
         if ( page.isVisible( request ) )
         {
-            XmlUtil.beginElement( strXmlArborescence, XmlContent.TAG_PAGE );
-            XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_ID, page.getId( ) );
-            XmlUtil.addElementHtml( strXmlArborescence, XmlContent.TAG_PAGE_NAME, page.getName( ) );
-            XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_DESCRIPTION, page.getDescription( ) );
-            XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_LEVEL, nLevel );
+            XmlUtil.beginElement( strXmlArborescence, CommonXmlTags.TAG_PAGE );
+            XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_ID, page.getId( ) );
+            XmlUtil.addElementHtml( strXmlArborescence, CommonXmlTags.TAG_PAGE_NAME, page.getName( ) );
+            XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_DESCRIPTION, page.getDescription( ) );
+            XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_LEVEL, nLevel );
 
             AdminPageJspBean adminPage = new AdminPageJspBean( );
 
@@ -276,19 +277,19 @@ public class SiteMapApp implements XPageApplication
                 if ( nImageLength >= 1 )
                 {
                     String strPageId = Integer.toString( page.getId( ) );
-                    XmlUtil.addElement( strXmlArborescence, XmlContent.TAG_PAGE_IMAGE, adminPage.getResourceImagePage( page, strPageId ) );
+                    XmlUtil.addElement( strXmlArborescence, CommonXmlTags.TAG_PAGE_IMAGE, adminPage.getResourceImagePage( page, strPageId ) );
                 }
             }
 
-            XmlUtil.beginElement( strXmlArborescence, XmlContent.TAG_CHILD_PAGES_LIST );
+            XmlUtil.beginElement( strXmlArborescence, CommonXmlTags.TAG_CHILD_PAGES_LIST );
 
             for ( Page pageChild : PageHome.getChildPagesMinimalData( nPageId ) )
             {
                 findPages( strXmlArborescence, pageChild.getId( ), nLevel + 1, seenPages, request );
             }
 
-            XmlUtil.endElement( strXmlArborescence, XmlContent.TAG_CHILD_PAGES_LIST );
-            XmlUtil.endElement( strXmlArborescence, XmlContent.TAG_PAGE );
+            XmlUtil.endElement( strXmlArborescence, CommonXmlTags.TAG_CHILD_PAGES_LIST );
+            XmlUtil.endElement( strXmlArborescence, CommonXmlTags.TAG_PAGE );
         }
     }
 }

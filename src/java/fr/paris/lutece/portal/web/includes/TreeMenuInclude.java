@@ -33,7 +33,7 @@
  */
 package fr.paris.lutece.portal.web.includes;
 
-import fr.paris.lutece.portal.business.XmlContent;
+import fr.paris.lutece.portal.business.xml.CommonXmlTags;
 import fr.paris.lutece.portal.business.page.Page;
 import fr.paris.lutece.portal.business.page.PageHome;
 import fr.paris.lutece.portal.business.portalcomponent.PortalComponentHome;
@@ -134,7 +134,7 @@ public class TreeMenuInclude implements PageInclude
         }
 
         strXml.append( XmlUtil.getXmlHeader( ) );
-        XmlUtil.beginElement( strXml, XmlContent.TAG_MENU_LIST );
+        XmlUtil.beginElement( strXml, CommonXmlTags.TAG_MENU_LIST );
 
         int nMenuIndex = 1;
 
@@ -142,15 +142,15 @@ public class TreeMenuInclude implements PageInclude
         {
             if ( ( menuPage.isVisible( request ) ) || ( nMode == PortalMenuService.MODE_ADMIN ) )
             {
-                XmlUtil.beginElement( strXml, XmlContent.TAG_MENU );
-                XmlUtil.addElement( strXml, XmlContent.TAG_MENU_INDEX, nMenuIndex );
-                XmlUtil.addElement( strXml, XmlContent.TAG_PAGE_ID, menuPage.getId( ) );
-                XmlUtil.addElementHtml( strXml, XmlContent.TAG_PAGE_NAME, menuPage.getName( ) );
-                XmlUtil.addElementHtml( strXml, XmlContent.TAG_PAGE_DESCRIPTION, menuPage.getDescription( ) );
-                XmlUtil.addElementHtml( strXml, XmlContent.TAG_CURRENT_PAGE_ID, strCurrentPageId );
+                XmlUtil.beginElement( strXml, CommonXmlTags.TAG_MENU );
+                XmlUtil.addElement( strXml, CommonXmlTags.TAG_MENU_INDEX, nMenuIndex );
+                XmlUtil.addElement( strXml, CommonXmlTags.TAG_PAGE_ID, menuPage.getId( ) );
+                XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_PAGE_NAME, menuPage.getName( ) );
+                XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_PAGE_DESCRIPTION, menuPage.getDescription( ) );
+                XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_CURRENT_PAGE_ID, strCurrentPageId );
 
                 // Seek of the sub-menus
-                XmlUtil.beginElement( strXml, XmlContent.TAG_SUBLEVEL_MENU_LIST );
+                XmlUtil.beginElement( strXml, CommonXmlTags.TAG_SUBLEVEL_MENU_LIST );
 
                 Collection<Page> listSubLevelMenuPages = PageHome.getChildPagesMinimalData( menuPage.getId( ) );
                 int nSubLevelMenuIndex = 1;
@@ -159,24 +159,24 @@ public class TreeMenuInclude implements PageInclude
                 {
                     if ( ( subLevelMenuPage.isVisible( request ) ) || ( nMode == PortalMenuService.MODE_ADMIN ) )
                     {
-                        XmlUtil.beginElement( strXml, XmlContent.TAG_SUBLEVEL_MENU );
-                        XmlUtil.addElement( strXml, XmlContent.TAG_MENU_INDEX, nMenuIndex );
-                        XmlUtil.addElement( strXml, XmlContent.TAG_SUBLEVEL_INDEX, nSubLevelMenuIndex );
-                        XmlUtil.addElement( strXml, XmlContent.TAG_PAGE_ID, subLevelMenuPage.getId( ) );
-                        XmlUtil.addElementHtml( strXml, XmlContent.TAG_PAGE_NAME, subLevelMenuPage.getName( ) );
-                        XmlUtil.addElementHtml( strXml, XmlContent.TAG_PAGE_DESCRIPTION, subLevelMenuPage.getDescription( ) );
-                        XmlUtil.addElementHtml( strXml, XmlContent.TAG_CURRENT_PAGE_ID, strCurrentPageId );
-                        XmlUtil.endElement( strXml, XmlContent.TAG_SUBLEVEL_MENU );
+                        XmlUtil.beginElement( strXml, CommonXmlTags.TAG_SUBLEVEL_MENU );
+                        XmlUtil.addElement( strXml, CommonXmlTags.TAG_MENU_INDEX, nMenuIndex );
+                        XmlUtil.addElement( strXml, CommonXmlTags.TAG_SUBLEVEL_INDEX, nSubLevelMenuIndex );
+                        XmlUtil.addElement( strXml, CommonXmlTags.TAG_PAGE_ID, subLevelMenuPage.getId( ) );
+                        XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_PAGE_NAME, subLevelMenuPage.getName( ) );
+                        XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_PAGE_DESCRIPTION, subLevelMenuPage.getDescription( ) );
+                        XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_CURRENT_PAGE_ID, strCurrentPageId );
+                        XmlUtil.endElement( strXml, CommonXmlTags.TAG_SUBLEVEL_MENU );
                     }
                 }
 
-                XmlUtil.endElement( strXml, XmlContent.TAG_SUBLEVEL_MENU_LIST );
-                XmlUtil.endElement( strXml, XmlContent.TAG_MENU );
+                XmlUtil.endElement( strXml, CommonXmlTags.TAG_SUBLEVEL_MENU_LIST );
+                XmlUtil.endElement( strXml, CommonXmlTags.TAG_MENU );
                 nMenuIndex++;
             }
         }
 
-        XmlUtil.endElement( strXml, XmlContent.TAG_MENU_LIST );
+        XmlUtil.endElement( strXml, CommonXmlTags.TAG_MENU_LIST );
 
         StyleSheet xslSource;
 

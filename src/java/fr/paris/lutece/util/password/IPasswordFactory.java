@@ -38,8 +38,6 @@ package fr.paris.lutece.util.password;
  */
 public interface IPasswordFactory
 {
-    public static final String BEAN_NAME = "passwordFactory";
-
     /**
      * Get a password for the stored representation
      * 
