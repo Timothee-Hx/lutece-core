@@ -474,14 +474,6 @@ public abstract class LuteceUser implements Principal, Serializable, Cloneable, 
         _luteceAuthenticationService = authenticationService;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Object clone( ) throws CloneNotSupportedException
-    {
-        return super.clone( );
-    }
 
     /**
      * Get the users email
