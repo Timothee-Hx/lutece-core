@@ -1,5 +1,5 @@
-/* 
- * Copyright (c) 2002-2022, City of Paris
+/*
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -106,7 +106,10 @@ public class FileImageService implements ImageResourceProvider
     public ImageResource getImageResource( int nIdResource )
     {
         
-        if ( !isAuthorized( nIdResource ) ) return null;
+        if ( !isAuthorized( nIdResource ) )
+        {
+            return null;
+        }
         
         File file = FileHome.findByPrimaryKey( nIdResource );
 

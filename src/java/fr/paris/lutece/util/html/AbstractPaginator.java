@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,7 +70,7 @@ public abstract class AbstractPaginator<E> implements IPaginator<E>
     protected String _strBaseUrl;
 
     /** the actual list */
-    protected List<E> _list;
+    protected transient List<E> _list;
 
     /** the current page */
     protected int _nPageCurrent;

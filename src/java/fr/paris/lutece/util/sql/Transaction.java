@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -378,7 +378,6 @@ public class Transaction
      * Checks that the transaction has been committed (or rolled back) before being destroyed and release all transaction resources (statement, connection, ...)
      * if not. {@inheritDoc }
      */
-    @Override
     protected void finalize( ) throws Throwable
     {
         if ( _nStatus == OPENED )

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,8 +60,8 @@ public class AdminMessage implements Serializable
     private String _strTarget;
     private int _nType;
     private boolean _bCancel;
-    private Object [ ] _messageArgs;
-    private Map<String, Object> _requestParameters;
+    private transient Object [ ] _messageArgs;
+    private transient Map<String, Object> _requestParameters;
     private String _strBackUrl;
 
     /**

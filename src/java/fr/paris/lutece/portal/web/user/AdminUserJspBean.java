@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -359,7 +359,7 @@ public class AdminUserJspBean extends AdminFeaturesPageJspBean
     private static final String CONSTANT_ANONYMIZE_ADMINUSER = "lutece.admin.anonymizeAdminUser";
     private static final String CONSTANT_MODIFY_ADMINUSER = "lutece.admin.modifyAdminUser";
     private static final String CONSTANT_MODIFY_ADMINUSER_GROUPS = "lutece.admin.modifyAdminUserGroups";
-    private static final String CONSTANT_MODIFY_ADMINUSER_PASSWORD = "lutece.admin.modifyAdminUserPassword";
+    private static final String CONSTANT_MODIFY_ADMINUSER_PASSOWRD = "lutece.admin.modifyAdminUserPassword";
     private static final String CONSTANT_MODIFY_ADMINUSER_ROLES = "lutece.admin.modifyAdminUserRoles";
     private static final String CONSTANT_MODIFY_ADMINUSER_RIGHTS = "lutece.admin.modifyAdminUserRights";
     private static final String CONSTANT_IMPORT_ADMINUSERS = "lutece.admin.importAdminUsers";
@@ -1131,7 +1131,7 @@ public class AdminUserJspBean extends AdminFeaturesPageJspBean
 
             AdminUserHome.update( user, PasswordUpdateMode.UPDATE );
 
-            AccessLogService.getInstance( ).info( AccessLoggerConstants.EVENT_TYPE_RIGHTS, CONSTANT_MODIFY_ADMINUSER_PASSWORD, currentUser,
+            AccessLogService.getInstance( ).info( AccessLoggerConstants.EVENT_TYPE_RIGHTS, CONSTANT_MODIFY_ADMINUSER_PASSOWRD, currentUser,
                     user.getAccessCode( ), CONSTANT_BO );
         }
 

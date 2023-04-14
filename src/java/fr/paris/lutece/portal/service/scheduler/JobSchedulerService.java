@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -74,16 +74,18 @@ public final class JobSchedulerService
         return _singleton;
     }
 
+
     /**
      * Initialize the service.
      */
-    private static void init( )
+
+    private static synchronized void init( )
     {
         SchedulerFactory factory = new StdSchedulerFactory( );
 
         try
         {
-            _scheduler = factory.getScheduler( );
+                _scheduler = factory.getScheduler( );
             _scheduler.start( );
             AppLogService.info( "Lutece job scheduler started." );
         }

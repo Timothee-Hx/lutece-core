@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2022, City of Paris
+ * Copyright (c) 2002-2023, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -101,7 +101,7 @@ public final class IndexationService
      * @throws LuteceInitException
      *             If an error occured
      */
-    public static void init( ) throws LuteceInitException
+    public static synchronized void init( ) throws LuteceInitException
     {
         // Read configuration properties
         boolean indexInWebapp = AppPropertiesService.getPropertyBoolean( PATH_INDEX_IN_WEBAPP, true );
