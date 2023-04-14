@@ -70,7 +70,7 @@ public abstract class AbstractPaginator<E> implements IPaginator<E>
     protected String _strBaseUrl;
 
     /** the actual list */
-    protected List<E> _list;
+    protected transient List<E> _list;
 
     /** the current page */
     protected int _nPageCurrent;

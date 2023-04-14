@@ -103,11 +103,11 @@ public abstract class MVCApplication implements XPageApplication
 
     // instance vars
     private static Logger _logger = MVCUtils.getLogger( );
-    private List<ErrorMessage> _listErrors = new ArrayList<>( );
-    private List<ErrorMessage> _listInfos = new ArrayList<>( );
-    private List<ErrorMessage> _listWarnings = new ArrayList<>( );
-    private MVCMessageBox _messageBox;
-    private Controller _controller = getClass( ).getAnnotation( Controller.class );
+    private transient List<ErrorMessage> _listErrors = new ArrayList<>( );
+    private transient List<ErrorMessage> _listInfos = new ArrayList<>( );
+    private transient List<ErrorMessage> _listWarnings = new ArrayList<>( );
+    private transient MVCMessageBox _messageBox;
+    private transient Controller _controller = getClass( ).getAnnotation( Controller.class );
 
     /**
      * Returns the content of the page
