@@ -51,15 +51,21 @@ public class AliasPortletHome extends PortletHome
     /** This class implements the Singleton design pattern. */
     private static AliasPortletHome _singleton;
 
+    private static final Object _aliasPortletHomeSingletonLock = new Object( );
+
     /**
      * Constructor
      */
     protected AliasPortletHome( )
     {
         if ( _singleton == null )
-        {
-            _singleton = this;
-        }
+            synchronized ( _aliasPortletHomeSingletonLock )
+            {
+                if ( _singleton == null )
+                {
+                    _singleton = this;
+                }
+            }
     }
 
     /**

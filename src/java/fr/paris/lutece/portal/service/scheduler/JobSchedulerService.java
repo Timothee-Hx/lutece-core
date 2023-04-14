@@ -74,16 +74,17 @@ public final class JobSchedulerService
         return _singleton;
     }
 
+
     /**
      * Initialize the service.
      */
-    private void init( )
+    private static synchronized void init( )
     {
         SchedulerFactory factory = new StdSchedulerFactory( );
 
         try
         {
-            _scheduler = factory.getScheduler( );
+                _scheduler = factory.getScheduler( );
             _scheduler.start( );
             AppLogService.info( "Lutece job scheduler started." );
         }

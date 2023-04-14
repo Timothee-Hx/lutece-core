@@ -101,7 +101,7 @@ public final class IndexationService
      * @throws LuteceInitException
      *             If an error occured
      */
-    public static void init( ) throws LuteceInitException
+    public static synchronized void init( ) throws LuteceInitException
     {
         // Read configuration properties
         boolean indexInWebapp = AppPropertiesService.getPropertyBoolean( PATH_INDEX_IN_WEBAPP, true );
