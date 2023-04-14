@@ -34,6 +34,7 @@
 package fr.paris.lutece.portal.business.editor;
 
 import fr.paris.lutece.portal.service.spring.SpringContextService;
+import fr.paris.lutece.portal.web.editor.EditorChoiceLutecePanelJspBean;
 
 import java.util.Collection;
 
@@ -42,7 +43,9 @@ import java.util.Collection;
  */
 public final class RichTextEditorHome
 {
-    private static IRichTextEditorDAO _dao = SpringContextService.getBean( IRichTextEditorDAO.BEAN_NAME );
+    public static final String BEAN_NAME = "richTextEditorDAO";
+
+    private static IRichTextEditorDAO _dao = SpringContextService.getBean( BEAN_NAME );
 
     /**
      * Instantiates a new rich text editor home.

@@ -51,6 +51,8 @@ import org.apache.logging.log4j.Logger;
  */
 public class LuteceConnectionService implements ConnectionService
 {
+   public static final int INFO_NOT_AVAILABLE = -1;
+
     private String _strPoolName;
     private Logger _logger;
     private ConnectionPool _connPool;

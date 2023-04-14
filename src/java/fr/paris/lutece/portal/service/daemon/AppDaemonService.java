@@ -50,6 +50,7 @@ import fr.paris.lutece.portal.service.util.AppPropertiesService;
  */
 public final class AppDaemonService
 {
+    private static final String BEAN_NAME = "daemonScheduler";
     private static final String PROPERTY_MAX_INITIAL_START_DELAY = "daemon.maxInitialStartDelay";
     private static final String PROPERTY_DAEMON_ON_STARTUP = ".onStartUp";
     private static final String PROPERTY_DAEMON_INTERVAL = ".interval";
@@ -79,7 +80,7 @@ public final class AppDaemonService
             return;
         }
 
-        _executor = SpringContextService.getBean( IDaemonScheduler.BEAN_NAME );
+        _executor = SpringContextService.getBean( BEAN_NAME );
 
         if ( _mapDaemonEntries.size( ) > 0 )
         {

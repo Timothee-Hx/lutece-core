@@ -45,16 +45,6 @@ import java.util.List;
  */
 public interface IPaginator<E> extends Serializable
 {
-    /** Default value for Page Index Parameter */
-    String PARAMETER_PAGE_INDEX = "page_index";
-
-    /** Default value for Items Per Page Parameter */
-    String PARAMETER_ITEMS_PER_PAGE = "items_per_page";
-    String LABEL_FIRST = "|&lt;";
-    String LABEL_PREVIOUS = "&lt;";
-    String LABEL_NEXT = "&gt;";
-    String LABEL_LAST = "&gt;|";
-
     /**
      * Gets the number of pages
      * 

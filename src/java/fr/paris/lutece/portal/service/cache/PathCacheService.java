@@ -57,10 +57,13 @@ public class PathCacheService extends AbstractCacheableService implements IPathC
         PageService.addPageEventListener( this );
     }
 
+    /** Bean name */
+  public static final String BEAN_NAME = "pathCacheService";
+
     @Override
     public String getName( )
     {
-        return IPathCacheService.BEAN_NAME;
+        return BEAN_NAME;
     }
 
     @Override

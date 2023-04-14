@@ -275,8 +275,8 @@ public final class PoolManager
 
         for ( ConnectionService cs : listPools )
         {
-            String strCurrentConnections = ( cs.getCurrentConnections( ) == ConnectionService.INFO_NOT_AVAILABLE ) ? "-" : ( "" + cs.getCurrentConnections( ) );
-            String strMaxConnections = ( cs.getMaxConnections( ) == ConnectionService.INFO_NOT_AVAILABLE ) ? "-" : ( "" + cs.getMaxConnections( ) );
+            String strCurrentConnections = ( cs.getCurrentConnections( ) == LuteceConnectionService.INFO_NOT_AVAILABLE ) ? "-" : ( "" + cs.getCurrentConnections( ) );
+            String strMaxConnections = ( cs.getMaxConnections( ) == LuteceConnectionService.INFO_NOT_AVAILABLE ) ? "-" : ( "" + cs.getMaxConnections( ) );
             listPoolsInfos.addItem( cs.getPoolName( ), strCurrentConnections + " / " + strMaxConnections + " (" + cs.getPoolProvider( ) + ")" );
         }
 

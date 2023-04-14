@@ -1089,7 +1089,7 @@ public final class AdminUserService
      */
     public static IPassword encryptPassword( String strPassword )
     {
-        IPasswordFactory passwordFactory = SpringContextService.getBean( IPasswordFactory.BEAN_NAME );
+        IPasswordFactory passwordFactory = SpringContextService.getBean( PasswordUtil.BEAN_NAME );
 
         return passwordFactory.getPasswordFromCleartext( strPassword );
     }

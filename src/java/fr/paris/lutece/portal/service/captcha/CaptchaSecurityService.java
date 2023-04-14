@@ -46,6 +46,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CaptchaSecurityService implements ICaptchaSecurityService
 {
+    private static final String EMPTY_STRING = "";
     private boolean _bActive = true;
     private boolean _bAvailable;
     private ICaptchaService _captchaService;

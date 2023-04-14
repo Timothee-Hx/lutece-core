@@ -40,8 +40,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface ICaptchaSecurityService
 {
-    String EMPTY_STRING = "";
-
     /**
      * Return an EMPTY_STRING if service is not available nor active
      * 

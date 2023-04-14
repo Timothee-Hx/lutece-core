@@ -210,7 +210,7 @@ public class DefaultFileDownloadService implements IFileDownloadUrlService
         LocalDateTime endValidity = LocalDateTime.MAX;
         if ( getValidityTime( ) > 0 )
         {
-            endValidity = LocalDateTime.now( ).plusMinutes( LINK_VALIDITY_TIME );
+            endValidity = LocalDateTime.now( ).plusMinutes( FileService.LINK_VALIDITY_TIME );
         }
         return Timestamp.valueOf( endValidity ).getTime( );
     }

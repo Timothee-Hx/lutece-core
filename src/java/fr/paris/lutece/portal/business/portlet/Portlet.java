@@ -33,7 +33,8 @@
  */
 package fr.paris.lutece.portal.business.portlet;
 
-import fr.paris.lutece.portal.business.XmlContent;
+import fr.paris.lutece.portal.business.xml.CommonXmlTags;
+import fr.paris.lutece.portal.business.xml.XmlContent;
 import fr.paris.lutece.portal.business.page.Page;
 import fr.paris.lutece.portal.business.stylesheet.StyleSheet;
 import fr.paris.lutece.util.xml.XmlUtil;
@@ -521,27 +522,27 @@ public abstract class Portlet implements XmlContent
     protected String addPortletTags( StringBuffer strPortlet )
     {
         StringBuffer strXml = new StringBuffer( );
-        XmlUtil.beginElement( strXml, TAG_PORTLET );
-        XmlUtil.addElementHtml( strXml, TAG_PORTLET_NAME, getName( ) );
-        XmlUtil.addElement( strXml, TAG_PORTLET_ID, getId( ) );
-        XmlUtil.addElement( strXml, TAG_PAGE_ID, getPageId( ) );
-        XmlUtil.addElement( strXml, TAG_PLUGIN_NAME, getPluginName( ) );
-        XmlUtil.addElement( strXml, TAG_DISPLAY_PORTLET_TITLE, getDisplayPortletTitle( ) );
+        XmlUtil.beginElement( strXml, CommonXmlTags.TAG_PORTLET );
+        XmlUtil.addElementHtml( strXml, CommonXmlTags.TAG_PORTLET_NAME, getName( ) );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_PORTLET_ID, getId( ) );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_PAGE_ID, getPageId( ) );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_PLUGIN_NAME, getPluginName( ) );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_DISPLAY_PORTLET_TITLE, getDisplayPortletTitle( ) );
 
         String strDisplayOnSmallDevice = ( ( getDeviceDisplayFlags( ) & FLAG_DISPLAY_ON_SMALL_DEVICE ) != 0 ) ? VALUE_TRUE : VALUE_FALSE;
-        XmlUtil.addElement( strXml, TAG_DISPLAY_ON_SMALL_DEVICE, strDisplayOnSmallDevice );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_DISPLAY_ON_SMALL_DEVICE, strDisplayOnSmallDevice );
 
         String strDisplayOnNormalDevice = ( ( getDeviceDisplayFlags( ) & FLAG_DISPLAY_ON_NORMAL_DEVICE ) != 0 ) ? VALUE_TRUE : VALUE_FALSE;
-        XmlUtil.addElement( strXml, TAG_DISPLAY_ON_NORMAL_DEVICE, strDisplayOnNormalDevice );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_DISPLAY_ON_NORMAL_DEVICE, strDisplayOnNormalDevice );
 
         String strDisplayOnLargeDevice = ( ( getDeviceDisplayFlags( ) & FLAG_DISPLAY_ON_LARGE_DEVICE ) != 0 ) ? VALUE_TRUE : VALUE_FALSE;
-        XmlUtil.addElement( strXml, TAG_DISPLAY_ON_LARGE_DEVICE, strDisplayOnLargeDevice );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_DISPLAY_ON_LARGE_DEVICE, strDisplayOnLargeDevice );
 
         String strDisplayOnXLargeDevice = ( ( getDeviceDisplayFlags( ) & FLAG_DISPLAY_ON_XLARGE_DEVICE ) != 0 ) ? VALUE_TRUE : VALUE_FALSE;
-        XmlUtil.addElement( strXml, TAG_DISPLAY_ON_XLARGE_DEVICE, strDisplayOnXLargeDevice );
+        XmlUtil.addElement( strXml, CommonXmlTags.TAG_DISPLAY_ON_XLARGE_DEVICE, strDisplayOnXLargeDevice );
 
         strXml.append( strPortlet.toString( ) );
-        XmlUtil.endElement( strXml, TAG_PORTLET );
+        XmlUtil.endElement( strXml, CommonXmlTags.TAG_PORTLET );
 
         return strXml.toString( );
     }

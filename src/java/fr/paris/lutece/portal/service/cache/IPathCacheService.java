@@ -41,9 +41,6 @@ import javax.servlet.http.HttpServletRequest;
 public interface IPathCacheService
 {
 
-    /** Bean name */
-    String BEAN_NAME = "pathCacheService";
-
     /**
      * Constructs a cache key
      * 
