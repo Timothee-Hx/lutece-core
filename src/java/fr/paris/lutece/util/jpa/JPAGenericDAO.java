@@ -33,6 +33,7 @@
  */
 package fr.paris.lutece.util.jpa;
 
+import fr.paris.lutece.portal.service.util.AppLogService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessResourceFailureException;
@@ -43,11 +44,16 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import java.lang.reflect.ParameterizedType;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import static fr.paris.lutece.portal.service.database.AppConnectionService.getConnection;
 
 /**
  * Class JPAGenericDAO
@@ -229,8 +235,25 @@ public abstract class JPAGenericDAO<K, E> implements IGenericDAO<K, E>
     public List<E> findAll( )
     {
         LOG.debug( "Selecting all entities of type : {}", ( ) -> getEntityClassName( ) );
+        Connection connection = getConnection( );
+        Statement stmt1 = null;
+        PreparedStatement pstmt = null;
+        String entityName = getEntityClassName( );
 
-        Query query = getEM( ).createQuery( "SELECT e FROM " + getEntityClassName( ) + " e " );
+
+        String strQuery = "SELECT e FROM  ?" + " e";
+
+        try {
+            stmt1 = connection.createStatement();
+            pstmt = connection.prepareStatement(strQuery);
+            pstmt.setString(1, entityName);
+            pstmt.executeQuery();
+            stmt1.close();
+        } catch (Exception e) {
+            AppLogService.error("Error in query : " + strQuery, e);
+        }
+
+        Query query = getEM( ).createQuery( strQuery );
 
         return query.getResultList( );
     }
