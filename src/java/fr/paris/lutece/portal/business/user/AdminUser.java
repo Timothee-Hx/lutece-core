@@ -369,18 +369,6 @@ public class AdminUser implements Serializable, AdminWorkgroupResource, User
     }
 
     /**
-     * Returns user's roles
-     * 
-     * @deprecated use getRBACRoles( )
-     * @return Returns user's roles
-     */
-    @Deprecated
-    public Map<String, UserRole> getRoles( )
-    {
-        return _roles;
-    }
-
-    /**
      * {@inheritDoc }
      */
     @Override

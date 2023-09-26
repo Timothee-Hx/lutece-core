@@ -1056,7 +1056,7 @@ public class AdminPagePortletJspBeanTest extends LuteceTestCase
      */
     private void removeUser( AdminUser user )
     {
-        Map<String, UserRole> roles = user.getRoles( );
+        Map<String, UserRole> roles = user.getUserRoles( );
         for ( String roleKey : roles.keySet( ) )
         {
             RBACHome.removeForRoleKey( roleKey );

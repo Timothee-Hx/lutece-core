@@ -80,22 +80,6 @@ public final class AdminWorkgroupService
     }
 
     /**
-     * Check if a resource should be visible to the user according its workgroup
-     * 
-     * @param resource
-     *            The resource to check
-     * @param user
-     *            The current user
-     * @return true if authorized, otherwise false
-     * @deprecated use isAuthorized( AdminWorkgroupResource, User )
-     */
-    @Deprecated
-    public static boolean isAuthorized( AdminWorkgroupResource resource, AdminUser user )
-    {
-        return isAuthorized( resource, (User) user );
-    }
-
-    /**
      * Filter a collection of resources for a given user
      *
      * @return A filtered collection of resources

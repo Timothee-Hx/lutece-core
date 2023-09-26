@@ -302,25 +302,6 @@ public final class RBACService
                         .collect( Collectors.toCollection( ReferenceList::new ) );
     }
 
-    /**
-     * Filter a Reference List for a given user
-     * 
-     * @param listResources
-     *            The list to filter
-     * @param strResourceType
-     *            The resource type
-     * @param strPermission
-     *            The permission to check
-     * @param user
-     *            The user
-     * @return The filtered collection
-     * @deprecated use getAuthorizedReferenceList( ReferenceList, String, String, User )
-     */
-    @Deprecated
-    public static ReferenceList getAuthorizedReferenceList( ReferenceList listResources, String strResourceType, String strPermission, AdminUser user )
-    {
-        return getAuthorizedReferenceList( listResources, strResourceType, strPermission, (User) user );
-    }
 
     /**
      * Filter a collection of RBACAction for a given user
@@ -351,26 +332,6 @@ public final class RBACService
                 .map( RBAC::getPermissionKey ).collect( Collectors.toSet( ) );
         return collection.stream( ).filter( action -> permissions.contains( action.getPermission( ) )
                 || permissions.contains( RBAC.WILDCARD_PERMISSIONS_KEY ) ).collect( Collectors.toList( ) );
-    }
-
-    /**
-     * Filter a collection of RBACAction for a given user
-     * 
-     * @param <E>
-     *            The RBAC resource
-     * @param collection
-     *            The collection to filter
-     * @param resource
-     *            The resource
-     * @param user
-     *            The user
-     * @return The filtered collection
-     * @deprecated use getAuthorizedActionsCollection( Collection, RBACResource, User )
-     */
-    @Deprecated
-    public static <E extends RBACAction> Collection<E> getAuthorizedActionsCollection( Collection<E> collection, RBACResource resource, AdminUser user )
-    {
-        return getAuthorizedActionsCollection( collection, resource, (User) user );
     }
 
 }

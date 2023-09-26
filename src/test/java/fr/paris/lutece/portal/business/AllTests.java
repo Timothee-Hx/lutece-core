@@ -36,7 +36,6 @@ package fr.paris.lutece.portal.business;
 import fr.paris.lutece.portal.business.portalcomponent.PortalComponentTest;
 import fr.paris.lutece.portal.business.portlet.AliasPortletTest;
 import fr.paris.lutece.portal.business.portlet.PortletTypeTest;
-import fr.paris.lutece.portal.business.rbac.AdminRoleTest;
 import fr.paris.lutece.portal.business.rbac.RBACTest;
 import fr.paris.lutece.portal.business.right.FeatureGroupTest;
 import fr.paris.lutece.portal.business.right.LevelTest;
@@ -46,6 +45,7 @@ import fr.paris.lutece.portal.business.style.ModeTest;
 import fr.paris.lutece.portal.business.style.PageTemplateTest;
 import fr.paris.lutece.portal.business.style.StyleTest;
 import fr.paris.lutece.portal.business.stylesheet.StyleSheetTest;
+import fr.paris.lutece.portal.business.user.AdminUser;
 import fr.paris.lutece.portal.business.user.AdminUserTest;
 import fr.paris.lutece.portal.business.workgroup.AdminWorkgroupTest;
 
@@ -71,7 +71,7 @@ public final class AllTests
         suite.addTest( new TestSuite( PortalComponentTest.class ) );
         suite.addTest( new TestSuite( AliasPortletTest.class ) );
         suite.addTest( new TestSuite( PortletTypeTest.class ) );
-        suite.addTest( new TestSuite( AdminRoleTest.class ) );
+        suite.addTest( new TestSuite( AdminUser.class ) );
         suite.addTest( new TestSuite( RBACTest.class ) );
         suite.addTest( new TestSuite( FeatureGroupTest.class ) );
         suite.addTest( new TestSuite( RightTest.class ) );

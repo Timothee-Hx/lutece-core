@@ -145,25 +145,6 @@ public final class WorkflowService
         return null;
     }
 
-    /**
-     * returns a list of actions possible for a given document based on the status of the document in the workflow and the user role
-     * 
-     * @param nIdResource
-     *            the document id
-     * @param strResourceType
-     *            the document type
-     * @param user
-     *            the adminUser
-     * @param nIdWorkflow
-     *            the workflow id
-     * @return a list of Action
-     * @deprecated use getActions( int, String, int, User )
-     */
-    @Deprecated
-    public Collection<Action> getActions( int nIdResource, String strResourceType, int nIdWorkflow, AdminUser user )
-    {
-        return getActions( nIdResource, strResourceType, nIdWorkflow, (User) user );
-    }
 
     /**
      * returns a list of actions possible for a given document based on the status of the document in the workflow and the user role
@@ -193,28 +174,6 @@ public final class WorkflowService
         return null;
     }
 
-    /**
-     * returns a list of actions possible for a given document based on the status of the document in the workflow and the user role
-     * 
-     * @param listIdResource
-     *            the list of resource id
-     * @param strResourceType
-     *            the document type
-     * @param nIdExternalParentId
-     *            the external parent identifier
-     * @param nIdWorkflow
-     *            the workflow id
-     * @param user
-     *            the User
-     * @return a list of Action
-     * @deprecated getActions( List, String, Integer, int, User )
-     */
-    @Deprecated
-    public Map<Integer, List<Action>> getActions( List<Integer> listIdResource, String strResourceType, Integer nIdExternalParentId, int nIdWorkflow,
-            AdminUser user )
-    {
-        return getActions( listIdResource, strResourceType, nIdExternalParentId, nIdWorkflow, (User) user );
-    }
 
     /**
      * return true if a form is associate to the action
@@ -228,32 +187,6 @@ public final class WorkflowService
     public boolean isDisplayTasksForm( int nIdAction, Locale locale )
     {
         return isAvailable( ) && _service.isDisplayTasksForm( nIdAction, locale );
-    }
-
-    /**
-     * Proceed action given in parameter
-     * 
-     * @param nIdResource
-     *            the resource id
-     * @param strResourceType
-     *            the resource type
-     * @param nIdAction
-     *            the action id
-     * @param nExternalParentId
-     *            the external parent id
-     * @param request
-     *            the request
-     * @param locale
-     *            locale
-     * @param bIsAutomatic
-     *            Is automatic
-     * @deprecated use doProcessAction( int, String, int, Integer, HttpServletRequest, Locale, boolean, User )
-     */
-    @Deprecated
-    public void doProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request, Locale locale,
-            boolean bIsAutomatic )
-    {
-        doProcessAction( nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, bIsAutomatic, null );
     }
 
     /**
@@ -299,27 +232,6 @@ public final class WorkflowService
         }
     }
 
-    /**
-     * returns the actions history performed on a resource
-     * 
-     * @param nIdResource
-     *            the resource id
-     * @param strResourceType
-     *            the resource type
-     * @param request
-     *            the request
-     * @param nIdWorkflow
-     *            the workflow id
-     * @param locale
-     *            the locale
-     * @return the history of actions performed on a resource
-     * @deprecated use getDisplayDocumentHistory( int, String, int, HttpServletRequest, Locale, User )
-     */
-    @Deprecated
-    public String getDisplayDocumentHistory( int nIdResource, String strResourceType, int nIdWorkflow, HttpServletRequest request, Locale locale )
-    {
-        return getDisplayDocumentHistory( nIdResource, strResourceType, nIdWorkflow, request, locale, null );
-    }
 
     /**
      * returns the actions history performed on a resource
@@ -360,33 +272,6 @@ public final class WorkflowService
      *            The model to add to the default model
      * @param strTemplate
      *            The template
-     * @return the history of actions performed on a resource
-     * @deprecated use getDisplayDocumentHistory( int, String, int, HttpServletRequest, Locale, Map, String, User )
-     */
-    @Deprecated
-    public String getDisplayDocumentHistory( int nIdResource, String strResourceType, int nIdWorkflow, HttpServletRequest request, Locale locale,
-            Map<String, Object> model, String strTemplate )
-    {
-        return getDisplayDocumentHistory( nIdResource, strResourceType, nIdWorkflow, request, locale, model, strTemplate, null );
-    }
-
-    /**
-     * returns the actions history performed on a resource
-     * 
-     * @param nIdResource
-     *            the resource id
-     * @param strResourceType
-     *            the resource type
-     * @param request
-     *            the request
-     * @param nIdWorkflow
-     *            the workflow id
-     * @param locale
-     *            the locale
-     * @param model
-     *            The model to add to the default model
-     * @param strTemplate
-     *            The template
      * @param user
      *            The User
      * @return the history of actions performed on a resource
@@ -407,31 +292,6 @@ public final class WorkflowService
             AppLogService.error( "You are using a too old Workflow provider version. Please upgrade." );
             return _provider.getDisplayDocumentHistory( nIdResource, strResourceType, nIdWorkflow, request, locale, user );
         }
-    }
-
-    /**
-     * Perform the information on the various tasks associated with the given action specified in parameter
-     * 
-     * @param nIdResource
-     *            the resource id
-     * @param strResourceType
-     *            the resource type
-     * @param nExternalParentId
-     *            the external parent id
-     * @param request
-     *            the request
-     * @param nIdAction
-     *            the action id
-     * @param locale
-     *            the locale
-     * @return null if there is no error in the task form else return the error message url
-     * @deprecated use doSaveTasksForm( int, String, int, Integer, HttpServletRequest, Locale, User )
-     */
-    @Deprecated
-    public String doSaveTasksForm( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request,
-            Locale locale )
-    {
-        return doSaveTasksForm( nIdResource, strResourceType, nIdAction, nExternalParentId, request, locale, null );
     }
 
     /**
@@ -582,30 +442,6 @@ public final class WorkflowService
      *            the action id
      * @param locale
      *            the locale
-     * @return the tasks form associated to the action
-     *
-     * @deprecated use getDisplayTasksForm( int, String, int, HttpServletRequest, Locale, User )
-     */
-    @Deprecated
-    public String getDisplayTasksForm( int nIdResource, String strResourceType, int nIdAction, HttpServletRequest request, Locale locale )
-    {
-        return getDisplayTasksForm( nIdResource, strResourceType, nIdAction, request, locale, null );
-
-    }
-
-    /**
-     * returns the tasks form
-     * 
-     * @param nIdResource
-     *            the document id
-     * @param strResourceType
-     *            the document type
-     * @param request
-     *            the request
-     * @param nIdAction
-     *            the action id
-     * @param locale
-     *            the locale
      * @param user
      *            the user
      * @return the tasks form associated to the action
@@ -635,26 +471,6 @@ public final class WorkflowService
     }
 
     /**
-     * Check that a given user is allowed to view a resource depending the state of the resource
-     * 
-     * @param nIdResource
-     *            the document id
-     * @param strResourceType
-     *            the document type
-     * @param user
-     *            the User
-     * @param nIdWorkflow
-     *            the workflow id
-     * @return a list of Action
-     * @deprecated use isAuthorized( int, String, int, User )
-     */
-    @Deprecated
-    public boolean isAuthorized( int nIdResource, String strResourceType, int nIdWorkflow, AdminUser user )
-    {
-        return isAuthorized( nIdResource, strResourceType, nIdWorkflow, (User) user );
-    }
-
-    /**
      * Get all authorized resource Id
      * 
      * @param strResourceType
@@ -672,29 +488,6 @@ public final class WorkflowService
     public List<Integer> getAuthorizedResourceList( String strResourceType, int nIdWorkflow, int nIdWorkflowState, Integer nExternalParentId, User user )
     {
         return isAvailable( ) ? _provider.getAuthorizedResourceList( strResourceType, nIdWorkflow, nIdWorkflowState, nExternalParentId, user ) : null;
-    }
-
-    /**
-     * Get all authorized resource Id
-     * 
-     * @param strResourceType
-     *            the resource type
-     * @param nIdWorkflow
-     *            the workflow id
-     * @param nIdWorkflowState
-     *            The workflow state id or -1 for all workflow states
-     * @param nExternalParentId
-     *            The external parent id
-     * @param user
-     *            the User
-     * @return a list resource id
-     * @deprecated use getAuthorizedResourceList( String, int, int, Integer, User )
-     */
-    @Deprecated
-    public List<Integer> getAuthorizedResourceList( String strResourceType, int nIdWorkflow, int nIdWorkflowState, Integer nExternalParentId, AdminUser user )
-    {
-        return getAuthorizedResourceList( strResourceType, nIdWorkflow, nIdWorkflowState, nExternalParentId, (User) user );
-
     }
 
     /**
@@ -719,29 +512,6 @@ public final class WorkflowService
     }
 
     /**
-     * Get all authorized resource Id by list of state
-     * 
-     * @param strResourceType
-     *            the resource type
-     * @param nIdWorkflow
-     *            the workflow id
-     * @param lListIdWorkflowState
-     *            The workflow state <b>id or null</b> for all workflow states
-     * @param nExternalParentId
-     *            the externbal parent identifier
-     * @param user
-     *            the User
-     * @return a list resource id
-     * @deprecated use getAuthorizedResourceList( String, int, List, Integer, User )
-     */
-    @Deprecated
-    public List<Integer> getAuthorizedResourceList( String strResourceType, int nIdWorkflow, List<Integer> lListIdWorkflowState, Integer nExternalParentId,
-            AdminUser user )
-    {
-        return getAuthorizedResourceList( strResourceType, nIdWorkflow, lListIdWorkflowState, nExternalParentId, (User) user );
-    }
-
-    /**
      * return a reference list which contains a list enabled workflow
      * 
      * @param user
@@ -753,22 +523,6 @@ public final class WorkflowService
     public ReferenceList getWorkflowsEnabled( User user, Locale locale )
     {
         return isAvailable( ) ? _provider.getWorkflowsEnabled( user, locale ) : null;
-    }
-
-    /**
-     * return a reference list which contains a list enabled workflow
-     * 
-     * @param user
-     *            the User
-     * @param locale
-     *            the locale
-     * @return a reference list which contains a list enabled workflow
-     * @deprecated use getWorkflowsEnabled( User, Locale )
-     */
-    @Deprecated
-    public ReferenceList getWorkflowsEnabled( AdminUser user, Locale locale )
-    {
-        return getWorkflowsEnabled( (User) user, locale );
     }
 
     /**
@@ -790,22 +544,6 @@ public final class WorkflowService
         }
 
         return null;
-    }
-
-    /**
-     * returns all state of a given workflow
-     * 
-     * @param user
-     *            the adminUser
-     * @param nIdWorkflow
-     *            the workflow id
-     * @return the state of a given document
-     * @deprecated use getAllStateByWorkflow( int, User )
-     */
-    @Deprecated
-    public Collection<State> getAllStateByWorkflow( int nIdWorkflow, AdminUser user )
-    {
-        return getAllStateByWorkflow( nIdWorkflow, (User) user );
     }
 
     /**
@@ -843,25 +581,6 @@ public final class WorkflowService
         }
 
         return null;
-    }
-
-    /**
-     * Execute action automatic
-     * 
-     * @param nIdResource
-     *            the document id
-     * @param strResourceType
-     *            the document type
-     * @param nIdWorkflow
-     *            the workflow id
-     * @param nExternalParentId
-     *            the external parent id
-     * @deprecated use executeActionAutomatic( int, String, int, Integer, User )
-     */
-    @Deprecated
-    public void executeActionAutomatic( int nIdResource, String strResourceType, int nIdWorkflow, Integer nExternalParentId )
-    {
-        executeActionAutomatic( nIdResource, strResourceType, nIdWorkflow, nExternalParentId, null );
     }
 
     /**
@@ -947,31 +666,6 @@ public final class WorkflowService
      *            the HTTP request
      * @param bIsAutomatic
      *            is automatic action
-     * @return true if the action can proceed, false otherwise
-     * @deprecated use canProcessAction( int, String, int, Integer, HttpServletRequest, User )
-     */
-    @Deprecated
-    public boolean canProcessAction( int nIdResource, String strResourceType, int nIdAction, Integer nExternalParentId, HttpServletRequest request,
-            boolean bIsAutomatic )
-    {
-        return canProcessAction( nIdResource, strResourceType, nIdAction, nExternalParentId, request, bIsAutomatic, null );
-    }
-
-    /**
-     * Check if the action can be proceed for the given resource
-     * 
-     * @param nIdResource
-     *            the id resource
-     * @param strResourceType
-     *            the resource type
-     * @param nIdAction
-     *            the id action
-     * @param nExternalParentId
-     *            the external parent id
-     * @param request
-     *            the HTTP request
-     * @param bIsAutomatic
-     *            is automatic action
      * @param user
      *            the RBACUser
      * @return true if the action can proceed, false otherwise
@@ -990,28 +684,6 @@ public final class WorkflowService
         }
 
         return false;
-    }
-
-    /**
-     * Proceed automatic reflexive actions of state given in parameter. This method should be called anytime a service changed the state of a resource without
-     * proceeding a workflow action
-     * 
-     * @param nIdResource
-     *            the resource id
-     * @param strResourceType
-     *            the resource type
-     * @param nIdState
-     *            the state of the resource id
-     * @param nIdExternalParent
-     *            the external parent id*
-     * @param locale
-     *            locale
-     * @deprecated use doProcessAutomaticReflexiveActions( int, String, int, Integer, Locale, User )
-     */
-    @Deprecated
-    public void doProcessAutomaticReflexiveActions( int nIdResource, String strResourceType, int nIdState, Integer nIdExternalParent, Locale locale )
-    {
-        doProcessAutomaticReflexiveActions( nIdResource, strResourceType, nIdState, nIdExternalParent, locale, null );
     }
 
     /**
