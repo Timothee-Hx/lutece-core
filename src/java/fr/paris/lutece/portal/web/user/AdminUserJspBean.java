@@ -1345,7 +1345,7 @@ public class AdminUserJspBean extends AdminFeaturesPageJspBean
             }
         }
 
-        StringBuffer sbXml = new StringBuffer( XmlUtil.getXmlHeader( ) );
+        StringBuilder sbXml = new StringBuilder( XmlUtil.getXmlHeader( ) );
         XmlUtil.beginElement( sbXml, CONSTANT_XML_USERS );
 
         for ( AdminUser user : listUsers )

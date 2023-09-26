@@ -160,7 +160,7 @@ public class XPage
      */
     public void setExtendedPathLabel( ReferenceList listPathItem )
     {
-        StringBuffer sbXml = new StringBuffer( );
+        StringBuilder sbXml = new StringBuilder( );
 
         for ( ReferenceItem item : listPathItem )
         {

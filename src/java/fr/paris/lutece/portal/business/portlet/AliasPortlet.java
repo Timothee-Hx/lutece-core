@@ -121,7 +121,7 @@ public class AliasPortlet extends Portlet
         int indexFin = strXmlAlias.indexOf( "</" + TAG_PORTLET + ">" );
         strXmlAlias = strXmlAlias.substring( indexDeb + strTagPortletName.length( ), indexFin );
 
-        StringBuffer buffXml = new StringBuffer( );
+        StringBuilder buffXml = new StringBuilder( );
         XmlUtil.beginElement( buffXml, TAG_PORTLET );
         XmlUtil.addElement( buffXml, TAG_PORTLET_NAME, getName( ) );
         buffXml.append( strXmlAlias );

@@ -54,7 +54,7 @@ public interface IResourceDisplayManager
      * @param nResourceId
      *            The resource Id
      */
-    void getXmlAddOn( StringBuffer strXml, String strResourceType, int nResourceId );
+    void getXmlAddOn( StringBuilder strXml, String strResourceType, int nResourceId );
 
     /**
      * Add datas to the model use by document template

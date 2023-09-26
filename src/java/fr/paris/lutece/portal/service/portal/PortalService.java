@@ -214,7 +214,7 @@ public final class PortalService
      */
     public static String getXmlPagesList( Collection<Page> listPages )
     {
-        StringBuffer strXml = new StringBuffer( );
+        StringBuilder strXml = new StringBuilder( );
         strXml.append( XmlUtil.getXmlHeader( ) );
         XmlUtil.beginElement( strXml, XmlContent.TAG_CHILD_PAGES_LIST );
 
@@ -638,7 +638,7 @@ public final class PortalService
      */
     private static String getXmlPagesListExtended( String strXmlExtend )
     {
-        StringBuffer strXml = new StringBuffer( );
+        StringBuilder strXml = new StringBuilder( );
         strXml.append( XmlUtil.getXmlHeader( ) );
         XmlUtil.beginElement( strXml, XmlContent.TAG_CHILD_PAGES_LIST );
 

@@ -193,7 +193,7 @@ public class SiteMapApp implements XPageApplication
      */
     private String buildPageContent( int nMode, HttpServletRequest request )
     {
-        StringBuffer strArborescenceXml = new StringBuffer( );
+        StringBuilder strArborescenceXml = new StringBuilder( );
         strArborescenceXml.append( XmlUtil.getXmlHeader( ) );
 
         int nLevel = 0;
@@ -250,7 +250,7 @@ public class SiteMapApp implements XPageApplication
      * @param request
      *            The HttpServletRequest
      */
-    private void findPages( StringBuffer strXmlArborescence, int nPageId, int nLevel, Set<Integer> seenPages, HttpServletRequest request )
+    private void findPages( StringBuilder strXmlArborescence, int nPageId, int nLevel, Set<Integer> seenPages, HttpServletRequest request )
     {
         if ( !seenPages.add( nPageId ) )
         {

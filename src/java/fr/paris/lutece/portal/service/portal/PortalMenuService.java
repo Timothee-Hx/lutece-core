@@ -157,7 +157,7 @@ public final class PortalMenuService extends AbstractCacheableService implements
     {
         Collection<Page> listPagesMenu = PageHome.getChildPagesMinimalData( PortalService.getRootPageId( ) );
 
-        StringBuffer strXml = new StringBuffer( );
+        StringBuilder strXml = new StringBuilder( );
         strXml.append( XmlUtil.getXmlHeader( ) );
         XmlUtil.beginElement( strXml, XmlContent.TAG_MENU_LIST );
 
@@ -190,7 +190,7 @@ public final class PortalMenuService extends AbstractCacheableService implements
         return xmlTransformerService.transformBySourceWithXslCache( strXml.toString( ), xslSource, mapParamRequest, outputProperties );
     }
 
-    private void buildPageXml( Page menuPage, StringBuffer strXml, int nMode, int nMenuIndex, int nCurrentPageId, HttpServletRequest request )
+    private void buildPageXml( Page menuPage, StringBuilder strXml, int nMode, int nMenuIndex, int nCurrentPageId, HttpServletRequest request )
     {
         XmlUtil.beginElement( strXml, XmlContent.TAG_MENU );
         XmlUtil.addElement( strXml, XmlContent.TAG_MENU_INDEX, nMenuIndex );

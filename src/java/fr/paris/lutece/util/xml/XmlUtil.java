@@ -80,7 +80,7 @@ public final class XmlUtil
      * @param strValue
      *            The value of the element
      */
-    public static void addElement( StringBuffer strXmlBuffer, String strTag, String strValue )
+    public static void addElement( StringBuilder strXmlBuffer, String strTag, String strValue )
     {
         if ( SecurityUtil.containsXmlExternalEntityInjectionTerms( strValue ) )
         {
@@ -106,7 +106,7 @@ public final class XmlUtil
      * @param attrList
      *            The attributes list
      */
-    public static void addEmptyElement( StringBuffer strXmlBuffer, String strTag, Map<?, ?> attrList )
+    public static void addEmptyElement( StringBuilder strXmlBuffer, String strTag, Map<?, ?> attrList )
     {
         strXmlBuffer.append( TAG_BEGIN );
         strXmlBuffer.append( strTag );
@@ -135,7 +135,7 @@ public final class XmlUtil
      * @param attrList
      *            the attribute list
      */
-    public static void addElement( StringBuffer strXmlBuffer, String strTag, String strValue, Map<?, ?> attrList )
+    public static void addElement( StringBuilder strXmlBuffer, String strTag, String strValue, Map<?, ?> attrList )
     {
         if ( SecurityUtil.containsXmlExternalEntityInjectionTerms( strValue ) )
         {
@@ -171,7 +171,7 @@ public final class XmlUtil
      * @param nValue
      *            The value of the element
      */
-    public static void addElement( StringBuffer strXmlBuffer, String strTag, int nValue )
+    public static void addElement( StringBuilder strXmlBuffer, String strTag, int nValue )
     {
         addElement( strXmlBuffer, strTag, String.valueOf( nValue ) );
     }
@@ -186,7 +186,7 @@ public final class XmlUtil
      * @param strValue
      *            The value of the element
      */
-    public static void addElementHtml( StringBuffer strXmlBuffer, String strTag, String strValue )
+    public static void addElementHtml( StringBuilder strXmlBuffer, String strTag, String strValue )
     {
         if ( SecurityUtil.containsXmlExternalEntityInjectionTerms( strValue ) )
         {
@@ -214,7 +214,7 @@ public final class XmlUtil
      * @param attrList
      *            The attributes list
      */
-    public static void addElementHtml( StringBuffer strXmlBuffer, String strTag, String strValue, Map<?, ?> attrList )
+    public static void addElementHtml( StringBuilder strXmlBuffer, String strTag, String strValue, Map<?, ?> attrList )
     {
         if ( SecurityUtil.containsXmlExternalEntityInjectionTerms( strValue ) )
         {
@@ -249,7 +249,7 @@ public final class XmlUtil
      * @param strTag
      *            The tag name of the element to add
      */
-    public static void beginElement( StringBuffer strXmlBuffer, String strTag )
+    public static void beginElement( StringBuilder strXmlBuffer, String strTag )
     {
         beginElement( strXmlBuffer, strTag, null );
     }
@@ -264,7 +264,7 @@ public final class XmlUtil
      * @param attrList
      *            The attributes list
      */
-    public static void beginElement( StringBuffer strXmlBuffer, String strTag, Map<?, ?> attrList )
+    public static void beginElement( StringBuilder strXmlBuffer, String strTag, Map<?, ?> attrList )
     {
         strXmlBuffer.append( TAG_BEGIN );
         strXmlBuffer.append( strTag );
@@ -289,7 +289,7 @@ public final class XmlUtil
      * @param strTag
      *            The tag name of the element to add
      */
-    public static void endElement( StringBuffer strXmlBuffer, String strTag )
+    public static void endElement( StringBuilder strXmlBuffer, String strTag )
     {
         strXmlBuffer.append( TAG_CLOSE_BEGIN );
         strXmlBuffer.append( strTag );

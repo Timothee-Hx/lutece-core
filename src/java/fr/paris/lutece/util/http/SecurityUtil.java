@@ -365,10 +365,10 @@ public final class SecurityUtil
     }
 
     /**
-     * Write a title into the dump stringbuffer
+     * Write a title into the dump StringBuilder
      * 
      * @param sbDump
-     *            The dump stringbuffer
+     *            The dump StringBuilder
      * @param strTitle
      *            The title
      */
@@ -380,10 +380,10 @@ public final class SecurityUtil
     }
 
     /**
-     * Write request variables into the dump stringbuffer
+     * Write request variables into the dump StringBuilder
      * 
      * @param sb
-     *            The dump stringbuffer
+     *            The dump StringBuilder
      * @param request
      *            The HTTP request
      */
@@ -406,10 +406,10 @@ public final class SecurityUtil
     }
 
     /**
-     * Write request headers infos into the dump stringbuffer
+     * Write request headers infos into the dump StringBuilder
      * 
      * @param sb
-     *            The dump stringbuffer
+     *            The dump StringBuilder
      * @param request
      *            The HTTP request
      */
@@ -432,10 +432,10 @@ public final class SecurityUtil
     }
 
     /**
-     * Write request parameters infos into the dump stringbuffer
+     * Write request parameters infos into the dump StringBuilder
      * 
      * @param sb
-     *            The dump stringbuffer
+     *            The dump StringBuilder
      * @param request
      *            The HTTP request
      */
@@ -461,7 +461,7 @@ public final class SecurityUtil
     }
 
     /**
-     * Write name / value infos into the dump stringbuffer
+     * Write name / value infos into the dump StringBuilder
      * 
      * @param sb
      *            The dump string buffer

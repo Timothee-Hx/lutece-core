@@ -518,9 +518,9 @@ public abstract class Portlet implements XmlContent
      *            The string buffer which contains the XML content of this portlet
      * @return The XML content of this portlet encapsulated by the common tags
      */
-    protected String addPortletTags( StringBuffer strPortlet )
+    protected String addPortletTags( StringBuilder strPortlet )
     {
-        StringBuffer strXml = new StringBuffer( );
+        StringBuilder strXml = new StringBuilder( );
         XmlUtil.beginElement( strXml, TAG_PORTLET );
         XmlUtil.addElementHtml( strXml, TAG_PORTLET_NAME, getName( ) );
         XmlUtil.addElement( strXml, TAG_PORTLET_ID, getId( ) );

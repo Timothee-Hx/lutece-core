@@ -1,8 +1,6 @@
 <%@ page errorPage="ErrorPagePortal.jsp" %><%@
     page import="fr.paris.lutece.portal.service.security.UserNotSignedException,
                  fr.paris.lutece.portal.service.security.SecurityService,
-                 java.util.Enumeration,
-                 java.lang.StringBuffer,
                  fr.paris.lutece.portal.web.LocalVariables,
                  fr.paris.lutece.portal.service.message.SiteMessageException,
                  fr.paris.lutece.portal.service.page.PageNotFoundException,

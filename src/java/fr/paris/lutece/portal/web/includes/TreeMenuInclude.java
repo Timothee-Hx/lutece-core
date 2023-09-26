@@ -116,7 +116,7 @@ public class TreeMenuInclude implements PageInclude
      */
     public String buildTreeMenuContent( int nIdPage, int nMode, HttpServletRequest request )
     {
-        StringBuffer strXml = new StringBuffer( );
+        StringBuilder strXml = new StringBuilder( );
 
         String strCurrentPageId = Integer.toString( nIdPage );
 

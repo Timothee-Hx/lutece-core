@@ -94,7 +94,7 @@ public class AdminMapJspBean extends AdminFeaturesPageJspBean
      */
     public String getMap( HttpServletRequest request )
     {
-        StringBuffer strArborescenceXml = new StringBuffer( );
+        StringBuilder strArborescenceXml = new StringBuilder( );
 
         StringBuilder strCssId = new StringBuilder( );
         int nLevel = 0;
@@ -144,7 +144,7 @@ public class AdminMapJspBean extends AdminFeaturesPageJspBean
      * @param strCssId
      *            The id Css for menu tree
      */
-    private void findPages( HttpServletRequest request, StringBuffer strXmlArborescence, int nPageId, int nLevel, String strCurrentPageId,
+    private void findPages( HttpServletRequest request, StringBuilder strXmlArborescence, int nPageId, int nLevel, String strCurrentPageId,
             StringBuilder strCssId )
     {
         Page page = PageHome.getPage( nPageId );

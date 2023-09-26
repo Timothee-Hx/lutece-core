@@ -65,7 +65,7 @@ public final class ResourceEnhancer
      * @param nResourceId
      *            The resource Id
      */
-    public static void getXmlAddOn( StringBuffer strXml, String strResourceType, int nResourceId )
+    public static void getXmlAddOn( StringBuilder strXml, String strResourceType, int nResourceId )
     {
         List<IResourceDisplayManager> managers = SpringContextService.getBeansOfType( IResourceDisplayManager.class );
 

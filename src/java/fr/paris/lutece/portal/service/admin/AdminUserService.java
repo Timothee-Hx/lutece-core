@@ -1424,7 +1424,7 @@ public final class AdminUserService
     public static String getXmlFromUser( AdminUser user, boolean bIncludeRoles, boolean bIncludeRights, boolean bIncludeWorkgroups, boolean bIncludeAttributes,
             List<IAttribute> listAttributes )
     {
-        StringBuffer sbXml = new StringBuffer( );
+        StringBuilder sbXml = new StringBuilder( );
         DateFormat dateFormat = new SimpleDateFormat( );
 
         XmlUtil.beginElement( sbXml, CONSTANT_XML_USER );
